@@ -5,6 +5,7 @@ import lombok.Setter;
 @Getter
 @Setter
 public class CryptocurrencyData {
+
     private Data data;
     private long timestamp;
 
