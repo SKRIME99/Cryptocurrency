@@ -7,7 +7,6 @@ import org.springframework.web.client.RestTemplate;
 public class CoinCapService {
     private static final String COINCAP_API_URL = "https://api.coincap.io/v2/assets/%s";
 
-
     private final RestTemplate restTemplate;
 
     public CoinCapService(RestTemplate restTemplate) {

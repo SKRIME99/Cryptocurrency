@@ -18,4 +18,5 @@ public class CryptocurrencyController {
     public CryptocurrencyData.Data getCryptocurrency(@PathVariable String name) {
         return coinCapService.getCryptocurrencyData(name).getData();
     }
+
 }
