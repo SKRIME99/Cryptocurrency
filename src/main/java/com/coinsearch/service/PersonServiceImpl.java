@@ -7,7 +7,7 @@ import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
+
 
 @Service
 @AllArgsConstructor
@@ -16,22 +16,19 @@ public class PersonServiceImpl implements PersonService{
     private PersonRepository personRepository;
     @Override
     public Person createPerson(Person person) {
-        Person savedPerson = personRepository.save(person);
-        return savedPerson;
+        return personRepository.save(person);
     }
 
     @Override
     public Person getPersonById(Long personId) {
-        Person person = personRepository.findById(Math.toIntExact(personId))
+        return personRepository.findById(Math.toIntExact(personId))
                 .orElseThrow(()->
                         new PersonNotFoundException("Person does not exist with given id: " + personId));
-        return person;
     }
 
     @Override
     public List<Person> getAllPeople() {
-        List<Person> people = personRepository.findAll();
-        return people;
+        return personRepository.findAll();
     }
 
     @Override
@@ -43,8 +40,6 @@ public class PersonServiceImpl implements PersonService{
         person.setName(updatedPerson.getName());
         person.setCryptocurrencies(updatedPerson.getCryptocurrencies());
 
-        Person updatedPersonObj = personRepository.save(person);
-
-        return updatedPersonObj;
+        return personRepository.save(person);
     }
 }

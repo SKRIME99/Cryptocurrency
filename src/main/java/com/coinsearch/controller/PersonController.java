@@ -26,8 +26,7 @@ public class PersonController {
 
     @GetMapping("{id}")
     public Person getPersonById(@PathVariable("id") Long personId){
-        Person person = personService.getPersonById(personId);
-        return person;
+        return personService.getPersonById(personId);
     }
 
     @GetMapping
@@ -38,8 +37,7 @@ public class PersonController {
 
     @PutMapping("{id}")
     public Person updatePerson(@PathVariable("id") Long personId, @RequestBody Person updatedPerson){
-        Person person = personService.updatePerson(personId, updatedPerson);
-        return person;
+        return personService.updatePerson(personId, updatedPerson);
     }
 
     @PutMapping("/{person_id}/crypto/{crypto_id}")
@@ -47,8 +45,7 @@ public class PersonController {
         Person person = personService.getPersonById(personId);
         CryptoData cryptoData = coinCapService.getCryptoDataById(cryptoId);
         person.addCrypto(cryptoData);
-        Person savedPerson = personService.updatePerson(personId, person);
-        return savedPerson;
+        return personService.updatePerson(personId, person);
     }
 
 

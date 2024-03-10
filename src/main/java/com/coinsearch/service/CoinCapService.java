@@ -16,7 +16,6 @@ import java.util.List;
 public class CoinCapService {
     private static final String COINCAP_API_URL = "https://api.coincap.io/v2/assets/%s";
 
-
     private final RestTemplate restTemplate;
     private final CryptocurrencyRepository cryptoRepository;
 
@@ -28,24 +27,23 @@ public class CoinCapService {
     public CryptoData createCryptocurrency(String cryptocurrency){
         String apiUrl = String.format(COINCAP_API_URL, cryptocurrency);
         CryptocurrencyData cryptocurrencyData = restTemplate.getForObject(apiUrl, CryptocurrencyData.class);
+        assert cryptocurrencyData != null;
         CryptoData cryptoData = cryptocurrencyData.getData();
-        CryptoData savedCryptoData = cryptoRepository.save(cryptoData);
-        return savedCryptoData;
+        return cryptoRepository.save(cryptoData);
     }
 
     public CryptoData getCryptoDataById(Long cryptoId) {
-        CryptoData cryptoData = cryptoRepository.findById(Math.toIntExact(cryptoId)).get();
-        return cryptoData;
+        return cryptoRepository.findById(Math.toIntExact(cryptoId)).orElseThrow(
+                () -> new PersonNotFoundException("Person does not exist with given id: " + cryptoId)
+        );
     }
 
     public CryptoData getCryptoDataByName(String name) {
-        CryptoData cryptoData = cryptoRepository.findByName(name);
-        return cryptoData;
+        return cryptoRepository.findByName(name);
     }
 
     public List<CryptoData> getAllCryptoData() {
-        List<CryptoData> data = cryptoRepository.findAll();
-        return data;
+        return cryptoRepository.findAll();
     }
 
 }

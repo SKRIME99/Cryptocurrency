@@ -1,9 +1,6 @@
 package com.coinsearch.controller;
 
 import com.coinsearch.model.CryptoData;
-import com.coinsearch.model.CryptocurrencyData;
-import com.coinsearch.model.Person;
-import com.coinsearch.repository.CryptocurrencyRepository;
 import com.coinsearch.service.CoinCapService;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -16,6 +13,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/api/v1/cryptocurrency")
 public class CryptocurrencyController {
+
     private final CoinCapService coinCapService;
 
     @GetMapping
@@ -26,13 +24,8 @@ public class CryptocurrencyController {
 
     @GetMapping("/{name}")
     public CryptoData getCryptoDataById(@PathVariable("name") String name){
-        CryptoData cryptoData = coinCapService.getCryptoDataByName(name);
-        return cryptoData;
+        return coinCapService.getCryptoDataByName(name);
     }
-
-
-
-
 
     @PostMapping
     public ResponseEntity<CryptoData> create(@RequestBody String cryptoCurrency){
