@@ -10,7 +10,7 @@ public interface PersonService {
 
     List<Person> getAllPeople();
 
-    Person updatePerson(Long PersonId, Person updatedPerson);
+    Person updatePerson(Long personId, Person updatedPerson);
 
 
 }
