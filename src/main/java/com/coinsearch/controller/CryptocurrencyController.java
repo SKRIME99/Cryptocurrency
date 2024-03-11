@@ -32,5 +32,4 @@ public class CryptocurrencyController {
         CryptoData cryptoData = coinCapService.createCryptocurrency(cryptoCurrency);
         return new ResponseEntity<>(cryptoData, HttpStatus.CREATED);
     }
-
 }

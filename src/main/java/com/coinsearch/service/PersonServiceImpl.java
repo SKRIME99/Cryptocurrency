@@ -42,4 +42,12 @@ public class PersonServiceImpl implements PersonService{
 
         return personRepository.save(person);
     }
+
+    @Override
+    public void deletePerson(Long personId) {
+        Person peron = personRepository.findById(Math.toIntExact(personId)).orElseThrow(
+                () -> new PersonNotFoundException("Person does not exist with given id: " + personId)
+        );
+        personRepository.deleteById(Math.toIntExact(personId));
+    }
 }

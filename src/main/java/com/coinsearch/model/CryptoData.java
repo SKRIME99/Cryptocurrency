@@ -1,5 +1,6 @@
 package com.coinsearch.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -32,6 +33,10 @@ public class CryptoData {
     private String changePercent24Hr;
     private String vwap24Hr;
 
+    @ManyToOne
+    @JoinColumn(name = "chain_id")
+    @JsonBackReference
+    private Chain chain;
 
     @JsonIgnore
     @ManyToMany(mappedBy = "cryptocurrencies")

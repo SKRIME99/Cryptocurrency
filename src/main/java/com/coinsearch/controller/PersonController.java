@@ -48,5 +48,12 @@ public class PersonController {
         return personService.updatePerson(personId, person);
     }
 
+    @DeleteMapping("/{person_id}")
+    public ResponseEntity<String> deletePerson(@PathVariable("person_id") Long personId){
+        personService.deletePerson(personId);
+        return ResponseEntity.ok("Person deleted successfully");
+    }
+
+
 
 }
