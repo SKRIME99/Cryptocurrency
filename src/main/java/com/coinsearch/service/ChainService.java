@@ -2,14 +2,9 @@ package com.coinsearch.service;
 
 import com.coinsearch.exception.PersonNotFoundException;
 import com.coinsearch.model.Chain;
-import com.coinsearch.model.CryptoData;
-import com.coinsearch.model.CryptocurrencyData;
-import com.coinsearch.model.Person;
 import com.coinsearch.repository.ChainRepository;
-import com.coinsearch.repository.CryptocurrencyRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
-import org.springframework.web.client.RestTemplate;
 
 import java.util.List;
 
