@@ -14,6 +14,7 @@ public class CoinCapService {
 
     private final RestTemplate restTemplate;
     private final CryptocurrencyRepository cryptoRepository;
+    private final String ERROR_MESSAGE = "Crypto does not exist with given id: ";
 
     public CoinCapService(RestTemplate restTemplate, CryptocurrencyRepository cryptoRepository) {
         this.restTemplate = restTemplate;
@@ -21,9 +22,6 @@ public class CoinCapService {
     }
 
     public CryptoData createCryptocurrency(String cryptocurrency){
-        if (!checkCryptoName(cryptocurrency)){
-            throw new EntityNotFoundException("Can't create cryptocurrency with name: " + cryptocurrency);
-        }
         String apiUrl = String.format(COINCAP_API_URL, cryptocurrency);
         CryptocurrencyData cryptocurrencyData = restTemplate.getForObject(apiUrl, CryptocurrencyData.class);
         assert cryptocurrencyData != null;
@@ -33,7 +31,7 @@ public class CoinCapService {
 
     public CryptoData getCryptoDataById(Long cryptoId) {
         return cryptoRepository.findById(Math.toIntExact(cryptoId)).orElseThrow(
-                () -> new EntityNotFoundException("Crypto does not exist with given id: " + cryptoId)
+                () -> new EntityNotFoundException(ERROR_MESSAGE + cryptoId)
         );
     }
 
@@ -47,7 +45,7 @@ public class CoinCapService {
 
     public CryptoData updateCryptoData(Long cryptoId, CryptoData updatedCryptoData) {
         CryptoData cryptoData = cryptoRepository.findById(Math.toIntExact(cryptoId)).orElseThrow(
-                () -> new EntityNotFoundException("Crypto does not exist with given id: " + cryptoId)
+                () -> new EntityNotFoundException(ERROR_MESSAGE + cryptoId)
         );
 
         cryptoData.setName(updatedCryptoData.getName());
@@ -59,16 +57,10 @@ public class CoinCapService {
 
     public void deleteCrypto(Long cryptoId) {
         CryptoData cryptoData = cryptoRepository.findById(Math.toIntExact(cryptoId)).orElseThrow(
-                () -> new EntityNotFoundException("Crypto does not exist with given id: " + cryptoId)
+                () -> new EntityNotFoundException(ERROR_MESSAGE + cryptoId)
         );
-        cryptoRepository.deleteById(Math.toIntExact(cryptoId));
-    }
-
-    private boolean checkCryptoName(String cryptocurrency){
-        if (cryptocurrency.isBlank() || cryptocurrency.isEmpty()){
-            return false;
+        if (cryptoData != null) {
+            cryptoRepository.deleteById(Math.toIntExact(cryptoId));
         }
-        return true;
     }
-
 }
