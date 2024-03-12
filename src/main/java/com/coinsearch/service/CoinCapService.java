@@ -14,7 +14,7 @@ public class CoinCapService {
 
     private final RestTemplate restTemplate;
     private final CryptocurrencyRepository cryptoRepository;
-    private static final String errorMessage = "Crypto does not exist with given id: ";
+    private static final String ERROR_MESSAGE = "Crypto does not exist with given id: ";
 
     public CoinCapService(RestTemplate restTemplate, CryptocurrencyRepository cryptoRepository) {
         this.restTemplate = restTemplate;
@@ -31,7 +31,7 @@ public class CoinCapService {
 
     public CryptoData getCryptoDataById(Long cryptoId) {
         return cryptoRepository.findById(Math.toIntExact(cryptoId)).orElseThrow(
-                () -> new EntityNotFoundException(errorMessage + cryptoId)
+                () -> new EntityNotFoundException(ERROR_MESSAGE + cryptoId)
         );
     }
 
@@ -45,7 +45,7 @@ public class CoinCapService {
 
     public CryptoData updateCryptoData(Long cryptoId, CryptoData updatedCryptoData) {
         CryptoData cryptoData = cryptoRepository.findById(Math.toIntExact(cryptoId)).orElseThrow(
-                () -> new EntityNotFoundException(errorMessage + cryptoId)
+                () -> new EntityNotFoundException(ERROR_MESSAGE + cryptoId)
         );
 
         cryptoData.setName(updatedCryptoData.getName());
@@ -57,7 +57,7 @@ public class CoinCapService {
 
     public void deleteCrypto(Long cryptoId) {
         CryptoData cryptoData = cryptoRepository.findById(Math.toIntExact(cryptoId)).orElseThrow(
-                () -> new EntityNotFoundException(errorMessage + cryptoId)
+                () -> new EntityNotFoundException(ERROR_MESSAGE + cryptoId)
         );
         if (cryptoData != null) {
             cryptoRepository.deleteById(Math.toIntExact(cryptoId));
