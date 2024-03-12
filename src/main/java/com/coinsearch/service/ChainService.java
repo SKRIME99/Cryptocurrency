@@ -12,7 +12,7 @@ import java.util.List;
 @Service
 public class ChainService {
     private final ChainRepository chainRepository;
-    private final String ERROR_MESSAGE = "Chain does not exist with given id: ";
+    private static final String errorMessage = "Chain does not exist with given id: ";
 
     public Chain createChain(Chain chain) {
         return chainRepository.save(chain);
@@ -21,7 +21,7 @@ public class ChainService {
     public Chain getChainById(Long chainId) {
         return chainRepository.findById(Math.toIntExact(chainId))
                 .orElseThrow(()->
-                        new EntityNotFoundException(ERROR_MESSAGE + chainId));
+                        new EntityNotFoundException(errorMessage + chainId));
     }
 
 
@@ -32,7 +32,7 @@ public class ChainService {
 
     public Chain updateChain(Long chainId, Chain updatedChain) {
         Chain chain = chainRepository.findById(Math.toIntExact(chainId)).orElseThrow(
-                () -> new EntityNotFoundException(ERROR_MESSAGE + chainId)
+                () -> new EntityNotFoundException(errorMessage + chainId)
         );
 
         chain.setName(updatedChain.getName());
@@ -44,7 +44,7 @@ public class ChainService {
 
     public void deleteChain(Long chainId) {
         Chain chain = chainRepository.findById(Math.toIntExact(chainId)).orElseThrow(
-                () -> new EntityNotFoundException(ERROR_MESSAGE + chainId)
+                () -> new EntityNotFoundException(errorMessage + chainId)
         );
         if (chain != null) {
             chainRepository.deleteById(Math.toIntExact(chainId));

@@ -14,7 +14,7 @@ import java.util.List;
 public class PersonService {
 
     private PersonRepository personRepository;
-    private final String ERROR_MESSAGE = "Person does not exist with given id: ";
+    private static final  String errorMessage = "Person does not exist with given id: ";
 
     public Person createPerson(Person person) {
         return personRepository.save(person);
@@ -24,7 +24,7 @@ public class PersonService {
     public Person getPersonById(Long personId) {
         return personRepository.findById(Math.toIntExact(personId))
                 .orElseThrow(()->
-                        new EntityNotFoundException(ERROR_MESSAGE + personId));
+                        new EntityNotFoundException(errorMessage + personId));
     }
 
 
@@ -35,7 +35,7 @@ public class PersonService {
 
     public Person updatePerson(Long personId, Person updatedPerson) {
         Person person = personRepository.findById(Math.toIntExact(personId)).orElseThrow(
-                () -> new EntityNotFoundException(ERROR_MESSAGE + personId)
+                () -> new EntityNotFoundException(errorMessage + personId)
         );
 
         person.setName(updatedPerson.getName());
@@ -47,7 +47,7 @@ public class PersonService {
 
     public void deletePerson(Long personId) {
         Person person = personRepository.findById(Math.toIntExact(personId)).orElseThrow(
-                () -> new EntityNotFoundException(ERROR_MESSAGE + personId)
+                () -> new EntityNotFoundException(errorMessage + personId)
         );
         if (person != null) {
             personRepository.deleteById(Math.toIntExact(personId));
