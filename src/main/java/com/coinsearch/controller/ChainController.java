@@ -2,7 +2,6 @@ package com.coinsearch.controller;
 
 import com.coinsearch.model.CryptoData;
 import com.coinsearch.model.Chain;
-import com.coinsearch.model.Person;
 import com.coinsearch.service.ChainService;
 import com.coinsearch.service.CoinCapService;
 import lombok.AllArgsConstructor;
@@ -46,6 +45,8 @@ public class ChainController {
         Chain chain = chainService.getChainById(chainId);
         CryptoData cryptoData = coinCapService.getCryptoDataById(cryptoId);
         chain.addCrypto(cryptoData);
+        cryptoData.setChain(chain);
+        coinCapService.updateCryptoData(cryptoId, cryptoData);
         return chainService.updateChain(chainId, chain);
     }
 

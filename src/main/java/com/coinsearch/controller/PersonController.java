@@ -3,10 +3,10 @@ package com.coinsearch.controller;
 import com.coinsearch.model.CryptoData;
 import com.coinsearch.model.Person;
 import com.coinsearch.service.CoinCapService;
-import com.coinsearch.service.PersonService;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import com.coinsearch.service.PersonService;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -49,11 +49,8 @@ public class PersonController {
     }
 
     @DeleteMapping("/{person_id}")
-    public ResponseEntity<String> deletePerson(@PathVariable("person_id") Long personId){
+    public ResponseEntity<String> deletePerson(@PathVariable("person_id") Long personId) {
         personService.deletePerson(personId);
         return ResponseEntity.ok("Person deleted successfully");
     }
-
-
-
 }

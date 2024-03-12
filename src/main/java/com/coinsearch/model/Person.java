@@ -24,7 +24,7 @@ public class Person {
     @ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(name = "user_cryptoData",
             joinColumns = @JoinColumn(name = "person_id", referencedColumnName = "id"),
-            inverseJoinColumns = @JoinColumn(name = "cryptoData_cryptoId", referencedColumnName = "id"))
+            inverseJoinColumns = @JoinColumn(name = "cryptoData_cryptoId", referencedColumnName = "cryptoId"))
     private Set<CryptoData> cryptocurrencies;
 
     public void addCrypto(CryptoData cryptoData){

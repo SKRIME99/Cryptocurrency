@@ -32,4 +32,10 @@ public class CryptocurrencyController {
         CryptoData cryptoData = coinCapService.createCryptocurrency(cryptoCurrency);
         return new ResponseEntity<>(cryptoData, HttpStatus.CREATED);
     }
+
+    @DeleteMapping("/{crypto_id}")
+    public ResponseEntity<String> deleteCrypto(@PathVariable("crypto_id") Long cryptoId) {
+        coinCapService.deleteCrypto(cryptoId);
+        return ResponseEntity.ok("Person deleted successfully");
+    }
 }

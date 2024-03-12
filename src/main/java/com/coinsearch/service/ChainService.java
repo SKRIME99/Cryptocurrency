@@ -1,6 +1,6 @@
 package com.coinsearch.service;
 
-import com.coinsearch.exception.PersonNotFoundException;
+import com.coinsearch.exception.EntityNotFoundException;
 import com.coinsearch.model.Chain;
 import com.coinsearch.repository.ChainRepository;
 import lombok.AllArgsConstructor;
@@ -20,7 +20,7 @@ public class ChainService {
     public Chain getChainById(Long chainId) {
         return chainRepository.findById(Math.toIntExact(chainId))
                 .orElseThrow(()->
-                        new PersonNotFoundException("Person does not exist with given id: " + chainId));
+                        new EntityNotFoundException("Chain does not exist with given id: " + chainId));
     }
 
 
@@ -31,7 +31,7 @@ public class ChainService {
 
     public Chain updateChain(Long chainId, Chain updatedChain) {
         Chain chain = chainRepository.findById(Math.toIntExact(chainId)).orElseThrow(
-                () -> new PersonNotFoundException("Person does not exist with given id: " + chainId)
+                () -> new EntityNotFoundException("Chain does not exist with given id: " + chainId)
         );
 
         chain.setName(updatedChain.getName());
@@ -42,8 +42,8 @@ public class ChainService {
 
 
     public void deleteChain(Long chainId) {
-        Chain chain = chainRepository.findById(Math.toIntExact(chainId)).orElseThrow(
-                () -> new PersonNotFoundException("Chain does not exist with given id: " + chainId)
+        chainRepository.findById(Math.toIntExact(chainId)).orElseThrow(
+                () -> new EntityNotFoundException("Chain does not exist with given id: " + chainId)
         );
         chainRepository.deleteById(Math.toIntExact(chainId));
     }

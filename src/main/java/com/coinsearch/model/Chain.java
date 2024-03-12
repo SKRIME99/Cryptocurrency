@@ -1,6 +1,5 @@
 package com.coinsearch.model;
 
-import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -27,4 +26,5 @@ public class Chain {
     public void addCrypto(CryptoData cryptoData) {
         cryptocurrencies.add(cryptoData);
     }
+
 }
