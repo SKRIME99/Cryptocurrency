@@ -68,10 +68,10 @@ public class CoinCapService {
                 () -> new EntityNotFoundException(ERROR_MESSAGE + cryptoId)
         );
         if (cryptoData.getPersons().size() != 0){
-            throw new RuntimeException("Can't delete crypto " + cryptoId + " because people are using it. Try deleting this crypto from a specified person.");
+            throw new EntityNotFoundException("Can't delete crypto " + cryptoId + " because people are using it. Try deleting this crypto from a specified person.");
         }
         if (cryptoData.getChain() != null){
-            throw new RuntimeException("Can't delete crypto " + cryptoId + " because it is in a chain. Try deleting this crypto from a specified chain.");
+            throw new EntityNotFoundException("Can't delete crypto " + cryptoId + " because it is in a chain. Try deleting this crypto from a specified chain.");
         }
         else if (cryptoData != null) {
             cryptoRepository.deleteById(Math.toIntExact(cryptoId));
