@@ -2,6 +2,7 @@ package com.coinsearch.service;
 
 import com.coinsearch.exception.EntityNotFoundException;
 import com.coinsearch.model.Chain;
+import com.coinsearch.model.CryptoData;
 import com.coinsearch.repository.ChainRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -46,7 +47,14 @@ public class ChainService {
         Chain chain = chainRepository.findById(Math.toIntExact(chainId)).orElseThrow(
                 () -> new EntityNotFoundException(ERROR_MESSAGE + chainId)
         );
-        if (chain != null) {
+
+        if (chain != null){
+            for (CryptoData cryptoData : chain.getCryptocurrencies()) {
+                cryptoData.setChain(null);
+            }
+
+            // Update the changes in the database
+            chain.getCryptocurrencies().clear();
             chainRepository.deleteById(Math.toIntExact(chainId));
         }
     }

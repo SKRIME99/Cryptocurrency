@@ -38,6 +38,7 @@ public class CryptoData {
     @JoinColumn(name = "chain_id")
     private Chain chain;
 
+
     @JsonIgnore
     @ManyToMany(mappedBy = "cryptocurrencies")
     private Set<Person> persons;

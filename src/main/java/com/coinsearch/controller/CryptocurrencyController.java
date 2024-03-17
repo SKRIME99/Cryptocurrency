@@ -46,7 +46,18 @@ public class CryptocurrencyController {
     @DeleteMapping("/{crypto_id}")
     public ResponseEntity<String> deleteCrypto(@PathVariable("crypto_id") Long cryptoId) {
         coinCapService.deleteCrypto(cryptoId);
-        return ResponseEntity.ok("Person deleted successfully");
+        return ResponseEntity.ok("Crypto deleted successfully");
     }
 
+    @DeleteMapping("/{crypto_id}/person/{person_id}")
+    public ResponseEntity<String> deleteCryptoFromPerson(@PathVariable("crypto_id") Long cryptoId, @PathVariable("person_id") Long personId) {
+        coinCapService.deleteCryptoFromPerson(cryptoId, personId);
+        return ResponseEntity.ok("Crypto " + cryptoId + " deleted successfully form person " + personId);
+    }
+
+    @DeleteMapping("/{crypto_id}/chain/{chain_id}")
+    public ResponseEntity<String> deleteCryptoFromChain(@PathVariable("crypto_id") Long cryptoId, @PathVariable("chain_id") Long chainId) {
+        coinCapService.deleteCryptoFromChain(cryptoId, chainId);
+        return ResponseEntity.ok("Crypto " + cryptoId + " deleted successfully form chain " + chainId);
+    }
 }
