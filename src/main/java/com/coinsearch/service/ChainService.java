@@ -17,10 +17,11 @@ import java.util.List;
 public class ChainService {
     private final ChainRepository chainRepository;
     private final Cache cache;
-    private static final Logger log = LoggerFactory.getLogger(PersonService.class);
+    private static final Logger log = LoggerFactory.getLogger(ChainService.class);
     private static final String ERROR_MESSAGE = "Chain does not exist with given id: ";
     private static final String CACHE_KEY = "chain-";
-    private static final String CACHE_LOG = "Data loaded from cache using key: ";
+    private static final String CACHE_HIT = "Cash HIT using key: %s";
+    private static final String CACHE_MISS = "Cash MISS using key: %s";
     public Chain createChain(Chain chain) {
         return chainRepository.save(chain);
     }
@@ -29,10 +30,10 @@ public class ChainService {
         String cacheKey = CACHE_KEY + chainId;
         Chain cachedChain = (Chain) cache.getFromCache(cacheKey);
         if (cachedChain != null){
-            log.info("cache hit: " + CACHE_LOG + cacheKey);
+            log.info(String.format(CACHE_HIT, cacheKey));
             return cachedChain;
         }
-        log.info("cache miss: " + cacheKey);
+        log.info(String.format(CACHE_MISS, cacheKey));
         Chain chainFromRepo = chainRepository.findById(Math.toIntExact(chainId))
                 .orElseThrow(()-> new EntityNotFoundException(ERROR_MESSAGE + chainId));
         cache.addToCache(cacheKey, chainFromRepo);

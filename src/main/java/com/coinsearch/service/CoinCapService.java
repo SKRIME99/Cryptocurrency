@@ -18,7 +18,7 @@ import java.util.List;
 @Service
 public class CoinCapService {
     private static final String COINCAP_API_URL = "https://api.coincap.io/v2/assets/%s";
-    private static final Logger log = LoggerFactory.getLogger(PersonService.class);
+    private static final Logger log = LoggerFactory.getLogger(CoinCapService.class);
     private final RestTemplate restTemplate;
     private final CryptocurrencyRepository cryptoRepository;
     private final PersonRepository personRepository;
@@ -26,7 +26,8 @@ public class CoinCapService {
     private final Cache cache;
     private static final String ERROR_MESSAGE = "Crypto does not exist with given id: ";
     private static final String CACHE_KEY = "crypto-";
-    private static final String CACHE_LOG = "Data loaded from cache using key: ";
+    private static final String CACHE_HIT = "Cash HIT using key: %s";
+    private static final String CACHE_MISS = "Cash MISS using key: %s";
 
     public CoinCapService(RestTemplate restTemplate, CryptocurrencyRepository cryptoRepository, PersonRepository personRepository, ChainRepository chainRepository, Cache cache) {
         this.restTemplate = restTemplate;
@@ -54,10 +55,10 @@ public class CoinCapService {
         String cacheKey = CACHE_KEY + name;
         CryptoData cachedCrypto = (CryptoData) cache.getFromCache(cacheKey);
         if (cachedCrypto != null){
-            log.info("cache hit: " + CACHE_LOG +  cacheKey);
+            log.info(String.format(CACHE_HIT,cacheKey));
             return cachedCrypto;
         }
-        log.info("cache miss: " + cacheKey);
+        log.info(String.format(CACHE_MISS, cacheKey));
         CryptoData cryptoData = cryptoRepository.findByName(name);
         cache.addToCache(cacheKey, cryptoData);
         return cryptoData;
@@ -88,10 +89,10 @@ public class CoinCapService {
         );
 
         if (cryptoData.getPersons().size() != 0){
-            throw new RuntimeException("Can't delete crypto " + cryptoId + " because people are using it. Try deleting this crypto from a specified person.");
+            throw new EntityNotFoundException("Can't delete crypto " + cryptoId + " because people are using it. Try deleting this crypto from a specified person.");
         }
         if (cryptoData.getChain() != null){
-            throw new RuntimeException("Can't delete crypto " + cryptoId + " because it is in a chain. Try deleting this crypto from a specified chain.");
+            throw new EntityNotFoundException("Can't delete crypto " + cryptoId + " because it is in a chain. Try deleting this crypto from a specified chain.");
         }
         else if (cryptoData != null) {
             String cacheKey = CACHE_KEY + cryptoData.getName();

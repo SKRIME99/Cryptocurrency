@@ -22,8 +22,8 @@ public class PersonService {
     private PersonRepository personRepository;
     private final Cache cache;
     private static final  String ERROR_MESSAGE = "Person does not exist with given id: ";
-    private static final String CACHE_LOG = "Data loaded from cache using key: ";
-
+    private static final String CACHE_HIT = "Cash HIT using key: %s";
+    private static final String CACHE_MISS = "Cash MISS using key: %s";
     private static final String CACHE_KEY = "person-";
 
     public Person createPerson(Person person) {
@@ -35,10 +35,10 @@ public class PersonService {
         String cacheKey = CACHE_KEY + personId;
         Person cachedPerson = (Person) cache.getFromCache(cacheKey);
         if (cachedPerson != null){
-            log.info("cache hit: " + CACHE_LOG + cacheKey);
+            log.info(String.format(CACHE_HIT, cacheKey));
             return cachedPerson;
         }
-        log.info("cash miss: " + cacheKey);
+        log.info(String.format(CACHE_MISS, cacheKey));
         Person personFromRepo = personRepository.findById(Math.toIntExact(personId))
                 .orElseThrow(()->
                         new EntityNotFoundException(ERROR_MESSAGE + personId));
