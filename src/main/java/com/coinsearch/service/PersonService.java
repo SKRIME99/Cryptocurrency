@@ -41,16 +41,17 @@ public class PersonService {
         return personRepository.findAll();
     }
 
+    @SuppressWarnings("unchecked")
     public List<Person> getAllPeopleWithCrypto(String cryptoName){
         String cacheKey = "genre-" + cryptoName;
-        List<Person> people = (List<Person>) cache.getFromCache(cacheKey);
-        if (people != null){
+        List<Person> peopleFromCache = (List<Person>) cache.getFromCache(cacheKey);
+        if (peopleFromCache != null){
             log.info(CACHE_LOG + cacheKey);
-            return people;
+            return peopleFromCache;
         }
-        people = personRepository.findAllPeopleWithCrypto(cryptoName);
-        cache.addToCache(cacheKey, people);
-        return people;
+        List<Person> peopleFromRepo = personRepository.findAllPeopleWithCrypto(cryptoName);
+        cache.addToCache(cacheKey, peopleFromRepo);
+        return peopleFromRepo;
     }
 
     public Person updatePerson(Long personId, Person updatedPerson) {
