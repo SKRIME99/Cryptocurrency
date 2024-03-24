@@ -55,10 +55,12 @@ public class CoinCapService {
         String cacheKey = CACHE_KEY + name;
         CryptoData cachedCrypto = (CryptoData) cache.getFromCache(cacheKey);
         if (cachedCrypto != null){
-            log.info(String.format(CACHE_HIT,cacheKey));
+            String logstash = String.format(CACHE_HIT,cacheKey);
+            log.info(logstash);
             return cachedCrypto;
         }
-        log.info(String.format(CACHE_MISS, cacheKey));
+        String logstash = String.format(CACHE_MISS, cacheKey);
+        log.info(logstash);
         CryptoData cryptoData = cryptoRepository.findByName(name);
         cache.addToCache(cacheKey, cryptoData);
         return cryptoData;

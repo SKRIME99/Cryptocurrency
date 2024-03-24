@@ -30,10 +30,12 @@ public class ChainService {
         String cacheKey = CACHE_KEY + chainId;
         Chain cachedChain = (Chain) cache.getFromCache(cacheKey);
         if (cachedChain != null){
-            log.info(String.format(CACHE_HIT, cacheKey));
+            String logstash = String.format(CACHE_HIT, cacheKey);
+            log.info(logstash);
             return cachedChain;
         }
-        log.info(String.format(CACHE_MISS, cacheKey));
+        String logstash = String.format(CACHE_MISS, cacheKey);
+        log.info(logstash);
         Chain chainFromRepo = chainRepository.findById(Math.toIntExact(chainId))
                 .orElseThrow(()-> new EntityNotFoundException(ERROR_MESSAGE + chainId));
         cache.addToCache(cacheKey, chainFromRepo);

@@ -35,10 +35,12 @@ public class PersonService {
         String cacheKey = CACHE_KEY + personId;
         Person cachedPerson = (Person) cache.getFromCache(cacheKey);
         if (cachedPerson != null){
-            log.info(String.format(CACHE_HIT, cacheKey));
+            String logstash = String.format(CACHE_HIT, cacheKey);
+            log.info(logstash);
             return cachedPerson;
         }
-        log.info(String.format(CACHE_MISS, cacheKey));
+        String logstash = String.format(CACHE_MISS, cacheKey);
+        log.info(logstash);
         Person personFromRepo = personRepository.findById(Math.toIntExact(personId))
                 .orElseThrow(()->
                         new EntityNotFoundException(ERROR_MESSAGE + personId));
