@@ -43,7 +43,7 @@ public class PersonService {
 
     @SuppressWarnings("unchecked")
     public List<Person> getAllPeopleWithCrypto(String cryptoName){
-        String cacheKey = "genre-" + cryptoName;
+        String cacheKey = "crypto-" + cryptoName;
         List<Person> peopleFromCache = (List<Person>) cache.getFromCache(cacheKey);
         if (peopleFromCache != null){
             log.info(CACHE_LOG + cacheKey);
