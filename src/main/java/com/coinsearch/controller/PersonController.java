@@ -35,6 +35,12 @@ public class PersonController {
         return ResponseEntity.ok(people);
     }
 
+    @GetMapping("/with/{cryptoName}")
+    public ResponseEntity<List<Person>> getAllSterlingMovies(@PathVariable("cryptoName") String crypto) {
+        List<Person> people = personService.getAllPeopleWithCrypto(crypto);
+        return ResponseEntity.ok(people);
+    }
+
     @PutMapping("{id}")
     public Person updatePerson(@PathVariable("id") Long personId, @RequestBody Person updatedPerson){
         return personService.updatePerson(personId, updatedPerson);
