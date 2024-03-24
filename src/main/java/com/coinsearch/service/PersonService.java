@@ -24,44 +24,45 @@ public class PersonService {
     private static final  String ERROR_MESSAGE = "Person does not exist with given id: ";
     private static final String CACHE_LOG = "Data loaded from cache using key: ";
 
+    private static final String CACHE_KEY = "person-";
+
     public Person createPerson(Person person) {
-        cache.clearCache();
         return personRepository.save(person);
     }
 
 
     public Person getPersonById(Long personId) {
-        return personRepository.findById(Math.toIntExact(personId))
+        String cacheKey = CACHE_KEY + personId;
+        Person cachedPerson = (Person) cache.getFromCache(cacheKey);
+        if (cachedPerson != null){
+            log.info("cache hit: " + CACHE_LOG + cacheKey);
+            return cachedPerson;
+        }
+        log.info("cash miss: " + cacheKey);
+        Person personFromRepo = personRepository.findById(Math.toIntExact(personId))
                 .orElseThrow(()->
                         new EntityNotFoundException(ERROR_MESSAGE + personId));
+        cache.addToCache(cacheKey, personFromRepo);
+        return personFromRepo;
     }
-
 
     public List<Person> getAllPeople() {
         return personRepository.findAll();
     }
 
-    @SuppressWarnings("unchecked")
     public List<Person> getAllPeopleWithCrypto(String cryptoName){
-        String cacheKey = "crypto-" + cryptoName;
-        List<Person> peopleFromCache = (List<Person>) cache.getFromCache(cacheKey);
-        if (peopleFromCache != null){
-            log.info(CACHE_LOG + cacheKey);
-            return peopleFromCache;
-        }
-        List<Person> peopleFromRepo = personRepository.findAllPeopleWithCrypto(cryptoName);
-        cache.addToCache(cacheKey, peopleFromRepo);
-        return peopleFromRepo;
+        return personRepository.findAllPeopleWithCrypto(cryptoName);
     }
 
     public Person updatePerson(Long personId, Person updatedPerson) {
         Person person = personRepository.findById(Math.toIntExact(personId)).orElseThrow(
                 () -> new EntityNotFoundException(ERROR_MESSAGE + personId)
         );
-
+        String cacheKey = CACHE_KEY + person.getId();
+        cache.removeFromCache(cacheKey);
         person.setName(updatedPerson.getName());
         person.setCryptocurrencies(updatedPerson.getCryptocurrencies());
-        cache.clearCache();
+        cache.addToCache(cacheKey,person);
         return personRepository.save(person);
     }
 
@@ -72,14 +73,14 @@ public class PersonService {
                 () -> new EntityNotFoundException("Person with ID " + personId + " not found")
         );
 
-        // Remove the person from the cryptocurrencies they're associated with
+
         for (CryptoData cryptoData : person.getCryptocurrencies()) {
             cryptoData.getPersons().remove(person);
         }
 
-        // Update the changes in the database
+        String cacheKey = CACHE_KEY + personId;
+        cache.removeFromCache(cacheKey);
         person.getCryptocurrencies().clear();
         personRepository.deleteById(Math.toIntExact(personId));
-        cache.clearCache();
     }
 }

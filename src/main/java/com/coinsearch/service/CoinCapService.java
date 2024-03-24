@@ -41,9 +41,6 @@ public class CoinCapService {
         CryptocurrencyData cryptocurrencyData = restTemplate.getForObject(apiUrl, CryptocurrencyData.class);
         assert cryptocurrencyData != null;
         CryptoData cryptoData = cryptocurrencyData.getData();
-        String cacheKey = CACHE_KEY + cryptoData.getName();
-        cache.addToCache(cacheKey, cryptoData);
-        log.info("added to cache");
         return cryptoRepository.save(cryptoData);
     }
 
@@ -57,9 +54,10 @@ public class CoinCapService {
         String cacheKey = CACHE_KEY + name;
         CryptoData cachedCrypto = (CryptoData) cache.getFromCache(cacheKey);
         if (cachedCrypto != null){
-            log.info(CACHE_LOG + cacheKey);
+            log.info("cache hit: " + CACHE_LOG +  cacheKey);
             return cachedCrypto;
         }
+        log.info("cache miss: " + cacheKey);
         CryptoData cryptoData = cryptoRepository.findByName(name);
         cache.addToCache(cacheKey, cryptoData);
         return cryptoData;
