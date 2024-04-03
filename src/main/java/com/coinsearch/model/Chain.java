@@ -20,7 +20,7 @@ public class Chain {
 
     private String name;
 
-    @OneToMany(mappedBy = "chain", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "chain", cascade = CascadeType.ALL)//
     private Set<CryptoData> cryptocurrencies;
 
     public void addCrypto(CryptoData cryptoData) {

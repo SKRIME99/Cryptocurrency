@@ -36,7 +36,7 @@ public class PersonController {
     }
 
     @GetMapping("/with/{cryptoName}")
-    public ResponseEntity<List<Person>> getAllSterlingMovies(@PathVariable("cryptoName") String crypto) {
+    public ResponseEntity<List<Person>> getAllPeopleWithCrypto(@PathVariable("cryptoName") String crypto) {
         List<Person> people = personService.getAllPeopleWithCrypto(crypto);
         return ResponseEntity.ok(people);
     }

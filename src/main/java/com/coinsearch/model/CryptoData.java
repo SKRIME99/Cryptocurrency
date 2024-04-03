@@ -32,7 +32,7 @@ public class CryptoData {
     private String changePercent24Hr;
     private String vwap24Hr;
 
-    @JsonIgnore
+    @JsonIgnore// чтоб рекурсии не было
     @ManyToOne
     @JoinColumn(name = "chain_id")
     private Chain chain;
