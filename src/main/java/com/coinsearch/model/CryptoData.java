@@ -20,7 +20,6 @@ public class CryptoData {
     @Column(name = "cryptoId")
     private Long crytpoId;
 
-
     private String id;
     private String name;
     private String rank;
@@ -37,7 +36,6 @@ public class CryptoData {
     @ManyToOne
     @JoinColumn(name = "chain_id")
     private Chain chain;
-
 
     @JsonIgnore
     @ManyToMany(mappedBy = "cryptocurrencies")

@@ -17,11 +17,12 @@ import java.util.List;
 public class ChainService {
     private final ChainRepository chainRepository;
     private final Cache cache;
-    private static final Logger log = LoggerFactory.getLogger(ChainService.class);
+    private static final Logger LOG = LoggerFactory.getLogger(ChainService.class);
     private static final String ERROR_MESSAGE = "Chain does not exist with given id: ";
     private static final String CACHE_KEY = "chain-";
     private static final String CACHE_HIT = "Cash HIT using key: %s";
     private static final String CACHE_MISS = "Cash MISS using key: %s";
+
     public Chain createChain(Chain chain) {
         return chainRepository.save(chain);
     }
@@ -31,27 +32,25 @@ public class ChainService {
         Chain cachedChain = (Chain) cache.getFromCache(cacheKey);
         if (cachedChain != null){
             String logstash = String.format(CACHE_HIT, cacheKey);
-            log.info(logstash);
+            LOG.info(logstash);
             return cachedChain;
         }
         String logstash = String.format(CACHE_MISS, cacheKey);
-        log.info(logstash);
+        LOG.info(logstash);
         Chain chainFromRepo = chainRepository.findById(Math.toIntExact(chainId))
                 .orElseThrow(()-> new EntityNotFoundException(ERROR_MESSAGE + chainId));
         cache.addToCache(cacheKey, chainFromRepo);
         return chainFromRepo;
     }
-
-
+    
     public List<Chain> getAllChains() {
         return chainRepository.findAll();
     }
-
-
+    
     public Chain updateChain(Long chainId, Chain updatedChain) {
         Chain chain = chainRepository.findById(Math.toIntExact(chainId)).orElseThrow(
-                () -> new EntityNotFoundException(ERROR_MESSAGE + chainId)
-        );
+            () -> new EntityNotFoundException(ERROR_MESSAGE + chainId)
+            );
         String cacheKey = CACHE_KEY + chain.getId();
         cache.removeFromCache(cacheKey);
         chain.setName(updatedChain.getName());
@@ -61,11 +60,10 @@ public class ChainService {
         return chainRepository.save(chain);
     }
 
-
     public void deleteChain(Long chainId) {
         Chain chain = chainRepository.findById(Math.toIntExact(chainId)).orElseThrow(
-                () -> new EntityNotFoundException(ERROR_MESSAGE + chainId)
-        );
+            () -> new EntityNotFoundException(ERROR_MESSAGE + chainId)
+            );
 
         if (chain != null){
             for (CryptoData cryptoData : chain.getCryptocurrencies()) {

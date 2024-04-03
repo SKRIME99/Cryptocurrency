@@ -13,11 +13,10 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-
 @Service
 @AllArgsConstructor
 public class PersonService {
-    private static final Logger log = LoggerFactory.getLogger(PersonService.class);
+    private static final Logger LOG = LoggerFactory.getLogger(PersonService.class);
 
     private PersonRepository personRepository;
     private final Cache cache;
@@ -29,18 +28,17 @@ public class PersonService {
     public Person createPerson(Person person) {
         return personRepository.save(person);
     }
-
-
+    
     public Person getPersonById(Long personId) {
         String cacheKey = CACHE_KEY + personId;
         Person cachedPerson = (Person) cache.getFromCache(cacheKey);
         if (cachedPerson != null){
             String logstash = String.format(CACHE_HIT, cacheKey);
-            log.info(logstash);
+            LOG.info(logstash);
             return cachedPerson;
         }
         String logstash = String.format(CACHE_MISS, cacheKey);
-        log.info(logstash);
+        LOG.info(logstash);
         Person personFromRepo = personRepository.findById(Math.toIntExact(personId))
                 .orElseThrow(()->
                         new EntityNotFoundException(ERROR_MESSAGE + personId));
@@ -58,8 +56,8 @@ public class PersonService {
 
     public Person updatePerson(Long personId, Person updatedPerson) {
         Person person = personRepository.findById(Math.toIntExact(personId)).orElseThrow(
-                () -> new EntityNotFoundException(ERROR_MESSAGE + personId)
-        );
+            () -> new EntityNotFoundException(ERROR_MESSAGE + personId)
+            );
         String cacheKey = CACHE_KEY + person.getId();
         cache.removeFromCache(cacheKey);
         person.setName(updatedPerson.getName());
@@ -67,15 +65,13 @@ public class PersonService {
         cache.addToCache(cacheKey,person);
         return personRepository.save(person);
     }
-
-
+    
     @Transactional
     public void deletePerson(Long personId) {
         Person person = personRepository.findById(Math.toIntExact(personId)).orElseThrow(
-                () -> new EntityNotFoundException("Person with ID " + personId + " not found")
-        );
-
-
+            () -> new EntityNotFoundException("Person with ID " + personId + " not found")
+            );
+        
         for (CryptoData cryptoData : person.getCryptocurrencies()) {
             cryptoData.getPersons().remove(person);
         }

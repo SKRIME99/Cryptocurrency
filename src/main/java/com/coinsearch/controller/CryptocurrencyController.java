@@ -21,6 +21,7 @@ public class CryptocurrencyController {
     private boolean isValidCryptoCurrency(String cryptoCurrency) {
         return allowedCryptocurrencies.contains(cryptoCurrency.toLowerCase());
     }
+
     @GetMapping
     public ResponseEntity<List<CryptoData>> getAllCryptoData(){
         List<CryptoData> data = coinCapService.getAllCryptoData();

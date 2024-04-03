@@ -16,10 +16,11 @@ import org.springframework.web.servlet.resource.NoResourceFoundException;
 
 @RestControllerAdvice
 public class ExceptionApiHandler {
-    private static final Logger log = LoggerFactory.getLogger(PersonService.class);
+    private static final Logger LOG = LoggerFactory.getLogger(PersonService.class);
+
     @ExceptionHandler({RuntimeException.class, EntityNotFoundException.class})
     public ErrorMessage handleInternalServerError(RuntimeException ex) {
-        log.error("ERROR, 500 CODE");
+        LOG.error("ERROR, 500 CODE");
         return new ErrorMessage(ex.getMessage());
     }
 
@@ -27,21 +28,19 @@ public class ExceptionApiHandler {
             MethodArgumentNotValidException.class, MissingServletRequestParameterException.class,
             ConstraintViolationException.class})
     public ErrorMessage handleBadRequestException(Exception ex) {
-        log.error("ERROR, 400 CODE");
+        LOG.error("ERROR, 400 CODE");
         return new ErrorMessage("400 ERROR, BAD REQUEST");
     }
 
-
     @ExceptionHandler(HttpRequestMethodNotSupportedException.class)
     public ErrorMessage handleMethodNotAllowed(Exception ex) {
-        log.error("ERROR, 405 CODE");
+        LOG.error("ERROR, 405 CODE");
         return new ErrorMessage("405 ERROR, METHOD NOT ALLOWED");
     }
 
-
     @ExceptionHandler({NoHandlerFoundException.class, NoResourceFoundException.class})
     public ErrorMessage handlerFoundException(Exception ex) {
-        log.error("ERROR, 404 CODE");
+        LOG.error("ERROR, 404 CODE");
         return new ErrorMessage("404 ERROR, NOT FOUND");
     }
 
