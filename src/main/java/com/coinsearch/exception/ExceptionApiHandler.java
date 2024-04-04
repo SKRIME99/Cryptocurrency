@@ -4,11 +4,13 @@ import com.coinsearch.service.PersonService;
 import org.hibernate.exception.ConstraintViolationException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.converter.HttpMessageNotReadableException;
 import org.springframework.web.HttpRequestMethodNotSupportedException;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.MissingServletRequestParameterException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
+import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 import org.springframework.web.client.HttpClientErrorException;
 import org.springframework.web.servlet.NoHandlerFoundException;
@@ -18,6 +20,7 @@ import org.springframework.web.servlet.resource.NoResourceFoundException;
 public class ExceptionApiHandler {
     private static final Logger LOG = LoggerFactory.getLogger(PersonService.class);
 
+    @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
     @ExceptionHandler({RuntimeException.class, EntityNotFoundException.class})
     public ErrorMessage handleInternalServerError(RuntimeException ex) {
         LOG.error("ERROR, 500 CODE");
