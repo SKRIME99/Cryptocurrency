@@ -18,7 +18,7 @@ import org.springframework.web.servlet.resource.NoResourceFoundException;
 
 @RestControllerAdvice
 public class ExceptionApiHandler {
-    private static final Logger LOG = LoggerFactory.getLogger(PersonService.class);
+    private static final Logger LOG = LoggerFactory.getLogger(ExceptionApiHandler.class);
 
     @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
     @ExceptionHandler({RuntimeException.class, EntityNotFoundException.class})
