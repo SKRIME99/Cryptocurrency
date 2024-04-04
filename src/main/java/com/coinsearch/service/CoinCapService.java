@@ -24,7 +24,7 @@ public class CoinCapService {
     private final PersonRepository personRepository;
     private final ChainRepository chainRepository;
     private final Cache cache;
-    private static final String ERROR_MESSAGE = "Crypto does not exist with id: ";
+    private static final String ERROR_MESSAGE = "Crypto does not exist with given id: ";
     private static final String CACHE_KEY = "crypto-";
     private static final String CACHE_HIT = "Cash HIT using key: %s";
     private static final String CACHE_MISS = "Cash MISS using key: %s";
@@ -129,5 +129,4 @@ public class CoinCapService {
         cryptoData.setChain(null);
         chainRepository.save(chain);
     }
-
 }

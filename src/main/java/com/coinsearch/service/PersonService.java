@@ -35,7 +35,7 @@ public class PersonService {
         if (cachedPerson != null){
             String logstash = String.format(CACHE_HIT, cacheKey);
             LOG.info(logstash);
-            return cachedPerson;
+            return cachedPerson; 
         }
         String logstash = String.format(CACHE_MISS, cacheKey);
         LOG.info(logstash);
