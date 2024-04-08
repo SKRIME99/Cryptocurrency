@@ -70,7 +70,7 @@ public class CoinCapService {
         return cryptoRepository.findAll();
     }
 
-    public CryptoData updateCryptoData(Long cryptoId, CryptoData updatedCryptoData) {
+    public void updateCryptoData(Long cryptoId, CryptoData updatedCryptoData) {
         CryptoData cryptoData = cryptoRepository.findById(Math.toIntExact(cryptoId)).orElseThrow(
             () -> new EntityNotFoundException(ERROR_MESSAGE + cryptoId)
             );
@@ -82,7 +82,7 @@ public class CoinCapService {
         cryptoData.setPersons(updatedCryptoData.getPersons());
 
         cache.addToCache(cacheKey, cryptoData);
-        return cryptoRepository.save(cryptoData);
+        cryptoRepository.save(cryptoData);
     }
 
     public void deleteCrypto(Long cryptoId) {

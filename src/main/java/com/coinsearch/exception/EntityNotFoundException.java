@@ -9,4 +9,4 @@ public class EntityNotFoundException extends RuntimeException{
         super(message);
     }
 }
-// если ихем несуществующего
+// если ищем несуществующего

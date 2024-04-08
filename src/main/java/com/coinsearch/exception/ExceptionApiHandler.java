@@ -1,6 +1,5 @@
 package com.coinsearch.exception;
 
-import com.coinsearch.service.PersonService;
 import org.hibernate.exception.ConstraintViolationException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -16,17 +15,18 @@ import org.springframework.web.client.HttpClientErrorException;
 import org.springframework.web.servlet.NoHandlerFoundException;
 import org.springframework.web.servlet.resource.NoResourceFoundException;
 
-@RestControllerAdvice
+@RestControllerAdvice // автоматический контролирует все ошибки
 public class ExceptionApiHandler {
-    private static final Logger LOG = LoggerFactory.getLogger(PersonService.class);
+    private static final Logger LOG = LoggerFactory.getLogger(ExceptionApiHandler.class);
 
     @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
-    @ExceptionHandler({RuntimeException.class, EntityNotFoundException.class})
+    @ExceptionHandler({RuntimeException.class, EntityNotFoundException.class}) // обробатывает ошибки в скобках
     public ErrorMessage handleInternalServerError(RuntimeException ex) {
         LOG.error("ERROR, 500 CODE");
         return new ErrorMessage(ex.getMessage());
     }
 
+    @ResponseStatus(HttpStatus.BAD_REQUEST)
     @ExceptionHandler({HttpClientErrorException.class, HttpMessageNotReadableException.class,
             MethodArgumentNotValidException.class, MissingServletRequestParameterException.class,
             ConstraintViolationException.class})
@@ -35,12 +35,14 @@ public class ExceptionApiHandler {
         return new ErrorMessage("400 ERROR, BAD REQUEST");
     }
 
+    @ResponseStatus(HttpStatus.METHOD_NOT_ALLOWED)
     @ExceptionHandler(HttpRequestMethodNotSupportedException.class)
     public ErrorMessage handleMethodNotAllowed(Exception ex) {
         LOG.error("ERROR, 405 CODE");
         return new ErrorMessage("405 ERROR, METHOD NOT ALLOWED");
     }
 
+    @ResponseStatus(HttpStatus.NOT_FOUND)
     @ExceptionHandler({NoHandlerFoundException.class, NoResourceFoundException.class})
     public ErrorMessage handlerFoundException(Exception ex) {
         LOG.error("ERROR, 404 CODE");
