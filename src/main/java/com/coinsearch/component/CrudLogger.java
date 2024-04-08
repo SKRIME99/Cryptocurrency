@@ -12,7 +12,7 @@ import org.springframework.stereotype.Component;
 @Component
 @Slf4j
 public class CrudLogger {
-    private final Logger logger = LoggerFactory.getLogger(Logger.class);
+    private final Logger logger = LoggerFactory.getLogger(CrudLogger.class);
 
     @Pointcut("execution(* com.coinsearch.service.*.create*(..))")
     public void create() {}
