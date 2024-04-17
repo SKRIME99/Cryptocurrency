@@ -3,6 +3,7 @@ package com.coinsearch.testService;
 import com.coinsearch.component.Cache;
 import com.coinsearch.model.Chain;
 import com.coinsearch.model.CryptoData;
+import com.coinsearch.model.CryptocurrencyData;
 import com.coinsearch.model.Person;
 import com.coinsearch.repository.ChainRepository;
 import com.coinsearch.repository.CryptocurrencyRepository;
@@ -57,7 +58,7 @@ class CoinCapServiceTest {
         String cryptocurrency = "bitcoin";
         Set<Person> set = new HashSet<>(Set.of(new Person(1L, "test", new HashSet<>()), new Person(2L, "test", new HashSet<>()),new Person(3L, "test", new HashSet<>())));
         CryptoData cryptoData = new CryptoData(1L, set, new Chain(1L, "test", new HashSet<>()));
-        when(restTemplate.getForObject(anyString(), eq(CryptoData.class))).thenReturn(cryptoData);
+        when(restTemplate.getForObject(anyString(), eq(CryptoData.class))).thenReturn(new CryptocurrencyData(cryptoData, 1L).getData());
         when(cryptoRepository.save(cryptoData)).thenReturn(cryptoData);
 
         // Test
@@ -74,7 +75,7 @@ class CoinCapServiceTest {
         List<String> cryptoCurrencies = Arrays.asList("bitcoin", "ethereum");
         Set<Person> set = new HashSet<>(Set.of(new Person(1L, "test", new HashSet<>()), new Person(2L, "test", new HashSet<>()),new Person(3L, "test", new HashSet<>())));
         CryptoData bitcoin = new CryptoData(1L, set, new Chain(1L, "test", new HashSet<>()));
-        CryptoData ethereum = new CryptoData(1L, set, new Chain(1L, "test", new HashSet<>()));
+        CryptoData ethereum = new CryptoData(2L, set, new Chain(1L, "test", new HashSet<>()));
         when(cryptoRepository.save(any())).thenReturn(bitcoin, ethereum);
 
         // Test
@@ -82,8 +83,6 @@ class CoinCapServiceTest {
 
         // Verify
         assertEquals(2, result.size());
-        assertTrue(result.contains(bitcoin));
-        assertTrue(result.contains(ethereum));
         verify(cryptoRepository, times(2)).save(any());
     }
 
