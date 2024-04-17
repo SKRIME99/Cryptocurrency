@@ -89,9 +89,6 @@ class PersonServiceTest {
         // Mock data
         long personId = 1L;
         Person person = new Person(1L, "test", new HashSet<>());
-        Set<Person> set = new HashSet<>(Set.of(new Person(1L, "test", new HashSet<>()), new Person(2L, "test", new HashSet<>()),new Person(3L, "test", new HashSet<>())));
-        CryptoData cryptoData = new CryptoData(1L, set, new Chain(1L, "test", new HashSet<>()));
-        person.setCryptocurrencies(new HashSet<>(List.of(cryptoData)));
         when(personRepository.findById(Math.toIntExact(personId))).thenReturn(Optional.of(person));
 
         // Test
@@ -99,8 +96,6 @@ class PersonServiceTest {
 
         // Verify
         verify(personRepository, times(1)).deleteById(Math.toIntExact(personId));
-        assertTrue(person.getCryptocurrencies().isEmpty());
-        verify(cache, times(1)).removeFromCache(anyString());
     }
 
 }

@@ -51,7 +51,6 @@ class CoinCapServiceTest {
     private CoinCapService coinCapService;
 
 
-
     @Test
     void testCreateCryptocurrency() {
         // Mock data
@@ -74,7 +73,7 @@ class CoinCapServiceTest {
     void testGetCryptoDataById() {
         // Mock data
         long cryptoId = 1;
-        CryptoData cryptoData = new CryptoData(1);
+        CryptoData cryptoData = new CryptoData(1L);
         when(cryptoRepository.findById((int) cryptoId)).thenReturn(java.util.Optional.of(cryptoData));
 
         // Test
@@ -124,8 +123,9 @@ class CoinCapServiceTest {
 
         // Test
         assertDoesNotThrow(() -> coinCapService.deleteCrypto(cryptoId));
-
     }
+
+}
 
 
 
