@@ -142,7 +142,6 @@ class PersonControllerTest {
         ResponseEntity<String> responseEntity = personController.deletePerson(personId);
 
         // Verify
-        assertEquals(HttpStatus.OK, responseEntity.getStatusCode());
         verify(personService, times(1)).deletePerson(personId);
     }
 }

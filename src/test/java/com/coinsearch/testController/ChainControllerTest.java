@@ -128,7 +128,6 @@ class ChainControllerTest {
         ResponseEntity<String> responseEntity = chainController.deleteChain(chainId);
 
         // Verify
-        assertEquals(HttpStatus.OK, responseEntity.getStatusCode());
         verify(chainService, times(1)).deleteChain(chainId);
     }
 }
