@@ -1058,3 +1058,35 @@ Caused by: org.postgresql.util.PSQLException: FATAL: password authentication fai
 2024-04-17T22:21:28.655+03:00  INFO 7364 --- [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
 2024-04-17T22:21:28.655+03:00  INFO 7364 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
 2024-04-17T22:21:28.656+03:00  INFO 7364 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2024-04-17T22:41:14.373+03:00  INFO 7364 --- [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-04-17T22:41:14.380+03:00  INFO 7364 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2024-04-17T22:41:14.384+03:00  INFO 7364 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2024-04-17T22:54:10.214+03:00  INFO 19124 --- [restartedMain] c.coinsearch.CryptoserviceApplication    : Starting CryptoserviceApplication using Java 21.0.2 with PID 19124 (C:\Users\d\IdeaProjects\Cryptocurrency\target\classes started by d in C:\Users\d\IdeaProjects\Cryptocurrency)
+2024-04-17T22:54:10.217+03:00  INFO 19124 --- [restartedMain] c.coinsearch.CryptoserviceApplication    : No active profile set, falling back to 1 default profile: "default"
+2024-04-17T22:54:10.293+03:00  INFO 19124 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2024-04-17T22:54:10.293+03:00  INFO 19124 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2024-04-17T22:54:11.279+03:00  INFO 19124 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-04-17T22:54:11.366+03:00  INFO 19124 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 76 ms. Found 3 JPA repository interfaces.
+2024-04-17T22:54:12.312+03:00  INFO 19124 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2024-04-17T22:54:12.326+03:00  INFO 19124 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-04-17T22:54:12.327+03:00  INFO 19124 --- [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.18]
+2024-04-17T22:54:12.402+03:00  INFO 19124 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-04-17T22:54:12.402+03:00  INFO 19124 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 2108 ms
+2024-04-17T22:54:12.657+03:00  INFO 19124 --- [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-04-17T22:54:12.728+03:00  INFO 19124 --- [restartedMain] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.4.1.Final
+2024-04-17T22:54:12.777+03:00  INFO 19124 --- [restartedMain] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2024-04-17T22:54:13.052+03:00  INFO 19124 --- [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-04-17T22:54:13.079+03:00  INFO 19124 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2024-04-17T22:54:13.256+03:00  INFO 19124 --- [restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@550b6b6a
+2024-04-17T22:54:13.257+03:00  INFO 19124 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2024-04-17T22:54:13.301+03:00  WARN 19124 --- [restartedMain] org.hibernate.orm.deprecation            : HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2024-04-17T22:54:14.296+03:00  INFO 19124 --- [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-04-17T22:54:14.389+03:00  INFO 19124 --- [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-04-17T22:54:15.318+03:00  INFO 19124 --- [restartedMain] o.s.d.j.r.query.QueryEnhancerFactory     : Hibernate is in classpath; If applicable, HQL parser will be used.
+2024-04-17T22:54:16.042+03:00  WARN 19124 --- [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-04-17T22:54:17.203+03:00  INFO 19124 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2024-04-17T22:54:17.242+03:00  INFO 19124 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path ''
+2024-04-17T22:54:17.252+03:00  INFO 19124 --- [restartedMain] c.coinsearch.CryptoserviceApplication    : Started CryptoserviceApplication in 7.506 seconds (process running for 8.85)
+2024-04-17T22:54:32.782+03:00  INFO 19124 --- [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-04-17T22:54:32.788+03:00  INFO 19124 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2024-04-17T22:54:32.798+03:00  INFO 19124 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
