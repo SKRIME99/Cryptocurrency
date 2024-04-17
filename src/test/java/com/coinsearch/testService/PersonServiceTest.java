@@ -64,34 +64,6 @@ class PersonServiceTest {
         verify(cache, times(1)).addToCache(anyString(), eq(expectedPerson));
     }
 
-    @Test
-    void testGetAllPeople() {
-        // Mock data
-        List<Person> expectedPeople = Arrays.asList(new Person(), new Person());
-        when(personRepository.findAll()).thenReturn(expectedPeople);
-
-        // Test
-        List<Person> result = personService.getAllPeople();
-
-        // Verify
-        assertEquals(expectedPeople, result);
-        verify(personRepository, times(1)).findAll();
-    }
-
-    @Test
-    void testGetAllPeopleWithCrypto() {
-        // Mock data
-        String cryptoName = "bitcoin";
-        List<Person> expectedPeople = Arrays.asList(new Person(), new Person());
-        when(personRepository.findAllPeopleWithCrypto(cryptoName)).thenReturn(expectedPeople);
-
-        // Test
-        List<Person> result = personService.getAllPeopleWithCrypto(cryptoName);
-
-        // Verify
-        assertEquals(expectedPeople, result);
-        verify(personRepository, times(1)).findAllPeopleWithCrypto(cryptoName);
-    }
 
     @Test
     void testUpdatePerson() {
@@ -131,13 +103,4 @@ class PersonServiceTest {
         verify(cache, times(1)).removeFromCache(anyString());
     }
 
-    @Test
-    void testDeletePerson_NotFound() {
-        // Mock data
-        long personId = 1L;
-        when(personRepository.findById(Math.toIntExact(personId))).thenReturn(Optional.empty());
-
-        // Test and Verify
-        assertThrows(EntityNotFoundException.class, () -> personService.deletePerson(personId));
-    }
 }

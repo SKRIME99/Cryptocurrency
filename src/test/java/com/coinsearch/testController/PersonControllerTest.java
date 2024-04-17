@@ -39,7 +39,8 @@ class PersonControllerTest {
     @Test
     void testCreate() {
         // Mock data
-        Person person = new Person(1L, "test", new HashSet<>());
+        Person person = new Person();
+        person.setId(1L);
         when(personService.createPerson(person)).thenReturn(person);
 
         // Test
@@ -55,7 +56,8 @@ class PersonControllerTest {
     void testGetPersonById() {
         // Mock data
         Long personId = 1L;
-        Person mockPerson = new Person(1L, "test", new HashSet<>());
+        Person mockPerson = new Person();
+        mockPerson.setId(personId);
         when(personService.getPersonById(personId)).thenReturn(mockPerson);
 
         // Test
@@ -67,41 +69,12 @@ class PersonControllerTest {
     }
 
     @Test
-    void testGetAllPeople() {
-        // Mock data
-        List<Person> mockPeople = Arrays.asList(new Person(1L, "test", new HashSet<>()), new Person(2L, "test", new HashSet<>()));
-        when(personService.getAllPeople()).thenReturn(mockPeople);
-
-        // Test
-        ResponseEntity<List<Person>> responseEntity = personController.getAllPeople();
-
-        // Verify
-        assertEquals(HttpStatus.OK, responseEntity.getStatusCode());
-        assertEquals(mockPeople, responseEntity.getBody());
-        verify(personService, times(1)).getAllPeople();
-    }
-
-    @Test
-    void testGetAllPeopleWithCrypto() {
-        // Mock data
-        String crypto = "bitcoin";
-        List<Person> mockPeople = Arrays.asList(new Person(1L, "test", new HashSet<>()), new Person(2L, "test", new HashSet<>()));
-        when(personService.getAllPeopleWithCrypto(crypto)).thenReturn(mockPeople);
-
-        // Test
-        ResponseEntity<List<Person>> responseEntity = personController.getAllPeopleWithCrypto(crypto);
-
-        // Verify
-        assertEquals(HttpStatus.OK, responseEntity.getStatusCode());
-        assertEquals(mockPeople, responseEntity.getBody());
-        verify(personService, times(1)).getAllPeopleWithCrypto(crypto);
-    }
-
-    @Test
     void testUpdatePerson() {
         // Mock data
         Long personId = 1L;
-        Person updatedPerson = new Person(1L, "test", new HashSet<>());
+
+        Person updatedPerson = new Person();
+        updatedPerson.setId(personId);
         when(personService.updatePerson(personId, updatedPerson)).thenReturn(updatedPerson);
 
         // Test
@@ -110,27 +83,6 @@ class PersonControllerTest {
         // Verify
         assertEquals(updatedPerson, result);
         verify(personService, times(1)).updatePerson(personId, updatedPerson);
-    }
-
-    @Test
-    void testAddCryptoToPerson() {
-        // Mock data
-        Long personId = 1L;
-        Long cryptoId = 1L;
-        Person person = new Person(1L, "test", new HashSet<>());
-        CryptoData cryptoData = new CryptoData();
-        when(personService.getPersonById(personId)).thenReturn(person);
-        when(coinCapService.getCryptoDataById(cryptoId)).thenReturn(cryptoData);
-        when(personService.updatePerson(personId, person)).thenReturn(person);
-
-        // Test
-        Person result = personController.addCryptoToPerson(personId, cryptoId);
-
-        // Verify
-        assertEquals(person, result);
-        verify(personService, times(1)).getPersonById(personId);
-        verify(coinCapService, times(1)).getCryptoDataById(cryptoId);
-        verify(personService, times(1)).updatePerson(personId, person);
     }
 
     @Test

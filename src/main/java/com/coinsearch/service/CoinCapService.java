@@ -109,7 +109,7 @@ public class CoinCapService {
                 () -> new EntityNotFoundException(ERROR_MESSAGE + cryptoId)
         );
 
-        if (cryptoData.getPersons().size() != 0){
+        if (cryptoData.getPersons() != null && cryptoData.getPersons().size() != 0){
             throw new EntityNotFoundException("Can't delete crypto " + cryptoId + " because people are using it. Try deleting this crypto from a specified person.");
         }
         if (cryptoData.getChain() != null){

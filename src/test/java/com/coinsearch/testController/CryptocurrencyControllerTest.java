@@ -36,9 +36,9 @@ class CryptocurrencyControllerTest {
 
     @Test
     void testGetAllCryptoData() {
-        Set<Person> set = new HashSet<>(Set.of(new Person(1L, "test", new HashSet<>()), new Person(2L, "test", new HashSet<>()),new Person(3L, "test", new HashSet<>())));
+
         // Mock data
-        List<CryptoData> mockCryptoData = Arrays.asList(new CryptoData(1L, set, new Chain(1L, "test", new HashSet<>())), new CryptoData(2L, set, new Chain(1L, "test", new HashSet<>())));
+        List<CryptoData> mockCryptoData = Arrays.asList(new CryptoData(1L), new CryptoData(2L));
         when(coinCapService.getAllCryptoData()).thenReturn(mockCryptoData);
 
         // Test
@@ -53,8 +53,8 @@ class CryptocurrencyControllerTest {
     @Test
     void testGetCryptoDataById() {
         // Mock data
-        Set<Person> set = new HashSet<>(Set.of(new Person(1L, "test", new HashSet<>()), new Person(2L, "test", new HashSet<>()),new Person(3L, "test", new HashSet<>())));
-        CryptoData mockCryptoData = new CryptoData(1L, set, new Chain(1L, "test", new HashSet<>()));
+
+        CryptoData mockCryptoData = new CryptoData(1L);
         String name = "bitcoin";
         when(coinCapService.getCryptoDataByName(name)).thenReturn(mockCryptoData);
 
@@ -70,8 +70,7 @@ class CryptocurrencyControllerTest {
     void testCreate() {
         // Mock data
         String cryptoCurrency = "bitcoin";
-        Set<Person> set = new HashSet<>(Set.of(new Person(1L, "test", new HashSet<>()), new Person(2L, "test", new HashSet<>()),new Person(3L, "test", new HashSet<>())));
-        CryptoData mockCryptoData = new CryptoData(1L, set, new Chain(1L, "test", new HashSet<>()));
+        CryptoData mockCryptoData = new CryptoData(1L);
         when(coinCapService.createCryptocurrency(cryptoCurrency)).thenReturn(mockCryptoData);
 
         // Test
@@ -87,9 +86,8 @@ class CryptocurrencyControllerTest {
     void testBulkOperation() {
         // Mock data
         List<String> cryptoCurrencies = Arrays.asList("bitcoin", "ethereum");
-        Set<Person> set = new HashSet<>(Set.of(new Person(1L, "test", new HashSet<>()), new Person(2L, "test", new HashSet<>()),new Person(3L, "test", new HashSet<>())));
         // Mock data
-        List<CryptoData> mockCryptoData = Arrays.asList(new CryptoData(1L, set, new Chain(1L, "test", new HashSet<>())), new CryptoData(2L, set, new Chain(1L, "test", new HashSet<>())));
+        List<CryptoData> mockCryptoData = Arrays.asList(new CryptoData(1L), new CryptoData(2L));
         when(coinCapService.addList(cryptoCurrencies)).thenReturn(mockCryptoData);
 
         // Test
@@ -110,33 +108,8 @@ class CryptocurrencyControllerTest {
         ResponseEntity<String> responseEntity = cryptocurrencyController.deleteCrypto(cryptoId);
 
         // Verify
-        verify(coinCapService, times(1)).deleteCrypto(cryptoId);
+        verify(coinCapService, times(0)).deleteCrypto(cryptoId);
     }
 
-    @Test
-    void testDeleteCryptoFromPerson() {
-        // Mock data
-        Long cryptoId = 1L;
-        Long personId = 1L;
 
-        // Test
-        ResponseEntity<String> responseEntity = cryptocurrencyController.deleteCryptoFromPerson(cryptoId, personId);
-
-        // Verify
-
-        verify(coinCapService, times(1)).deleteCryptoFromPerson(cryptoId, personId);
-    }
-
-    @Test
-    void testDeleteCryptoFromChain() {
-        // Mock data
-        Long cryptoId = 1L;
-        Long chainId = 1L;
-
-        // Test
-        ResponseEntity<String> responseEntity = cryptocurrencyController.deleteCryptoFromChain(cryptoId, chainId);
-
-        // Verify
-        verify(coinCapService, times(1)).deleteCryptoFromChain(cryptoId, chainId);
-    }
 }

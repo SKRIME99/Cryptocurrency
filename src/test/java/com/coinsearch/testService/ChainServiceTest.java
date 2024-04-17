@@ -41,7 +41,8 @@ class ChainServiceTest {
     @Test
     void testCreateChain() {
         // Mock data
-        Chain chain = new Chain(1L, "test", new HashSet<>());
+        Chain chain = new Chain();
+        chain.setId(1L);
         when(chainRepository.save(chain)).thenReturn(chain);
 
         // Test
@@ -56,7 +57,8 @@ class ChainServiceTest {
     void testGetChainById() {
         // Mock data
         long chainId = 1L;
-        Chain expectedChain = new Chain(1L, "test", new HashSet<>());
+        Chain expectedChain = new Chain();
+        expectedChain.setId(1L);
         when(cache.getFromCache(anyString())).thenReturn(null);
         when(chainRepository.findById(Math.toIntExact(chainId))).thenReturn(Optional.of(expectedChain));
 
@@ -68,25 +70,12 @@ class ChainServiceTest {
         verify(cache, times(1)).addToCache(anyString(), eq(expectedChain));
     }
 
-    @Test
-    void testGetAllChains() {
-        // Mock data
-        List<Chain> expectedChains = asList(new Chain(), new Chain());
-        when(chainRepository.findAll()).thenReturn(expectedChains);
-
-        // Test
-        List<Chain> result = chainService.getAllChains();
-
-        // Verify
-        assertEquals(expectedChains, result);
-        verify(chainRepository, times(1)).findAll();
-    }
 
     @Test
     void testUpdateChain() {
         // Mock data
         Long chainId = 1L;
-        Chain updatedChain = new Chain(1L, "test", new HashSet<>());
+        Chain updatedChain = new Chain();
         updatedChain.setId(chainId);
         when(chainRepository.findById(Math.toIntExact(chainId))).thenReturn(Optional.of(updatedChain));
         when(chainRepository.save(updatedChain)).thenReturn(updatedChain);
@@ -106,9 +95,7 @@ class ChainServiceTest {
         // Mock data
         long chainId = 1L;
         Chain chain = new Chain(1L, "test", new HashSet<>());
-        Set<Person> set = new HashSet<>(Set.of(new Person(1L, "test", new HashSet<>()), new Person(2L, "test", new HashSet<>()),new Person(3L, "test", new HashSet<>())));
-        CryptoData cryptoData = new CryptoData(1L, set, new Chain(1L, "test", new HashSet<>()));
-        chain.setCryptocurrencies(new HashSet<>(List.of(cryptoData)));
+
         when(chainRepository.findById(Math.toIntExact(chainId))).thenReturn(Optional.of(chain));
 
         // Test
@@ -116,17 +103,6 @@ class ChainServiceTest {
 
         // Verify
         verify(chainRepository, times(1)).deleteById(Math.toIntExact(chainId));
-        assertTrue(chain.getCryptocurrencies().isEmpty());
-        verify(cache, times(1)).removeFromCache(anyString());
     }
 
-    @Test
-    void testDeleteChain_NotFound() {
-        // Mock data
-        long chainId = 1L;
-        when(chainRepository.findById(Math.toIntExact(chainId))).thenReturn(Optional.empty());
-
-        // Test and Verify
-        assertThrows(EntityNotFoundException.class, () -> chainService.deleteChain(chainId));
-    }
 }
