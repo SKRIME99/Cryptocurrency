@@ -1,7 +1,9 @@
 package com.coinsearch.testController;
 
 import com.coinsearch.controller.CryptocurrencyController;
+import com.coinsearch.model.Chain;
 import com.coinsearch.model.CryptoData;
+import com.coinsearch.model.Person;
 import com.coinsearch.service.CoinCapService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -15,7 +17,9 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 
 import java.util.Arrays;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.*;
@@ -32,8 +36,9 @@ class CryptocurrencyControllerTest {
 
     @Test
     void testGetAllCryptoData() {
+        Set<Person> set = new HashSet<>(Set.of(new Person(1L, "test", new HashSet<>()), new Person(2L, "test", new HashSet<>()),new Person(3L, "test", new HashSet<>())));
         // Mock data
-        List<CryptoData> mockCryptoData = Arrays.asList(new CryptoData(1L), new CryptoData(2L));
+        List<CryptoData> mockCryptoData = Arrays.asList(new CryptoData(1L, set, new Chain(1L, "test", new HashSet<>())), new CryptoData(2L, set, new Chain(1L, "test", new HashSet<>())));
         when(coinCapService.getAllCryptoData()).thenReturn(mockCryptoData);
 
         // Test
@@ -48,7 +53,8 @@ class CryptocurrencyControllerTest {
     @Test
     void testGetCryptoDataById() {
         // Mock data
-        CryptoData mockCryptoData = new CryptoData(1L);
+        Set<Person> set = new HashSet<>(Set.of(new Person(1L, "test", new HashSet<>()), new Person(2L, "test", new HashSet<>()),new Person(3L, "test", new HashSet<>())));
+        CryptoData mockCryptoData = new CryptoData(1L, set, new Chain(1L, "test", new HashSet<>()));
         String name = "bitcoin";
         when(coinCapService.getCryptoDataByName(name)).thenReturn(mockCryptoData);
 
@@ -64,7 +70,8 @@ class CryptocurrencyControllerTest {
     void testCreate() {
         // Mock data
         String cryptoCurrency = "bitcoin";
-        CryptoData mockCryptoData = new CryptoData(1L);
+        Set<Person> set = new HashSet<>(Set.of(new Person(1L, "test", new HashSet<>()), new Person(2L, "test", new HashSet<>()),new Person(3L, "test", new HashSet<>())));
+        CryptoData mockCryptoData = new CryptoData(1L, set, new Chain(1L, "test", new HashSet<>()));
         when(coinCapService.createCryptocurrency(cryptoCurrency)).thenReturn(mockCryptoData);
 
         // Test
@@ -80,7 +87,9 @@ class CryptocurrencyControllerTest {
     void testBulkOperation() {
         // Mock data
         List<String> cryptoCurrencies = Arrays.asList("bitcoin", "ethereum");
-        List<CryptoData> mockCryptoData = Arrays.asList(new CryptoData(), new CryptoData());
+        Set<Person> set = new HashSet<>(Set.of(new Person(1L, "test", new HashSet<>()), new Person(2L, "test", new HashSet<>()),new Person(3L, "test", new HashSet<>())));
+        // Mock data
+        List<CryptoData> mockCryptoData = Arrays.asList(new CryptoData(1L, set, new Chain(1L, "test", new HashSet<>())), new CryptoData(2L, set, new Chain(1L, "test", new HashSet<>())));
         when(coinCapService.addList(cryptoCurrencies)).thenReturn(mockCryptoData);
 
         // Test

@@ -41,8 +41,10 @@ public class CryptoData {
     @ManyToMany(mappedBy = "cryptocurrencies")
     private Set<Person> persons;
 
-    public CryptoData(Long id){
+    public CryptoData(Long id, Set<Person> persons, Chain chain){
         this.crytpoId = id;
+        this.persons = persons;
+        this.chain = chain;
     }
 
 }
