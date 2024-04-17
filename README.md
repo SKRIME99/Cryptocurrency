@@ -34,7 +34,6 @@ CryptoInfo is a simple web application that allows users to retrieve information
     ```
     ./gradlew bootRun
     ```
-
 4. **Access the Application**: Open your web browser and navigate to `http://localhost:8080` to access the CryptoInfo web application.
 
 ## Usage
