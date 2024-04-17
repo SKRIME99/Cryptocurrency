@@ -61,7 +61,7 @@ public class CoinCapService {
                     String crypto = allowedCryptocurrencies.get(index);
                     return createCryptocurrency(crypto);
                 })
-                .collect(Collectors.toList());
+                .toList();
     }
 
     public CryptoData getCryptoDataById(Long cryptoId) {

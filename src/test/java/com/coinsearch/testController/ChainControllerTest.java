@@ -17,8 +17,7 @@ import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.*;
-
-public class ChainControllerTest {
+class ChainControllerTest {
 
     @Mock
     private ChainService chainService;

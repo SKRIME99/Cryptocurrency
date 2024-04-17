@@ -1029,3 +1029,32 @@ Caused by: org.postgresql.util.PSQLException: FATAL: password authentication fai
 	at org.hibernate.resource.transaction.backend.jdbc.internal.DdlTransactionIsolatorNonJtaImpl.getIsolatedConnection(DdlTransactionIsolatorNonJtaImpl.java:46) ~[hibernate-core-6.4.1.Final.jar:6.4.1.Final]
 	... 43 common frames omitted
 
+2024-04-17T22:21:14.067+03:00  INFO 7364 --- [restartedMain] c.coinsearch.CryptoserviceApplication    : Starting CryptoserviceApplication using Java 21.0.2 with PID 7364 (C:\Users\d\IdeaProjects\Cryptocurrency\target\classes started by d in C:\Users\d\IdeaProjects\Cryptocurrency)
+2024-04-17T22:21:14.069+03:00  INFO 7364 --- [restartedMain] c.coinsearch.CryptoserviceApplication    : No active profile set, falling back to 1 default profile: "default"
+2024-04-17T22:21:14.128+03:00  INFO 7364 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2024-04-17T22:21:14.128+03:00  INFO 7364 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2024-04-17T22:21:14.914+03:00  INFO 7364 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-04-17T22:21:14.988+03:00  INFO 7364 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 64 ms. Found 3 JPA repository interfaces.
+2024-04-17T22:21:15.819+03:00  INFO 7364 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2024-04-17T22:21:15.834+03:00  INFO 7364 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-04-17T22:21:15.834+03:00  INFO 7364 --- [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.18]
+2024-04-17T22:21:15.892+03:00  INFO 7364 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-04-17T22:21:15.892+03:00  INFO 7364 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1764 ms
+2024-04-17T22:21:16.081+03:00  INFO 7364 --- [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-04-17T22:21:16.125+03:00  INFO 7364 --- [restartedMain] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.4.1.Final
+2024-04-17T22:21:16.154+03:00  INFO 7364 --- [restartedMain] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2024-04-17T22:21:16.375+03:00  INFO 7364 --- [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-04-17T22:21:16.397+03:00  INFO 7364 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2024-04-17T22:21:16.536+03:00  INFO 7364 --- [restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@153d651e
+2024-04-17T22:21:16.538+03:00  INFO 7364 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2024-04-17T22:21:16.565+03:00  WARN 7364 --- [restartedMain] org.hibernate.orm.deprecation            : HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2024-04-17T22:21:17.410+03:00  INFO 7364 --- [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-04-17T22:21:17.491+03:00  INFO 7364 --- [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-04-17T22:21:18.098+03:00  INFO 7364 --- [restartedMain] o.s.d.j.r.query.QueryEnhancerFactory     : Hibernate is in classpath; If applicable, HQL parser will be used.
+2024-04-17T22:21:18.711+03:00  WARN 7364 --- [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-04-17T22:21:19.860+03:00  INFO 7364 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2024-04-17T22:21:19.900+03:00  INFO 7364 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path ''
+2024-04-17T22:21:19.910+03:00  INFO 7364 --- [restartedMain] c.coinsearch.CryptoserviceApplication    : Started CryptoserviceApplication in 6.273 seconds (process running for 6.753)
+2024-04-17T22:21:28.655+03:00  INFO 7364 --- [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-04-17T22:21:28.655+03:00  INFO 7364 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2024-04-17T22:21:28.656+03:00  INFO 7364 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms

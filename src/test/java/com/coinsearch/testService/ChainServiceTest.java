@@ -21,7 +21,7 @@ import static java.util.Arrays.*;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
 
-public class ChainServiceTest {
+class ChainServiceTest {
 
     @Mock
     private ChainRepository chainRepository;
