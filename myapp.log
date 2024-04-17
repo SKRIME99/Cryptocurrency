@@ -1090,3 +1090,32 @@ Caused by: org.postgresql.util.PSQLException: FATAL: password authentication fai
 2024-04-17T22:54:32.782+03:00  INFO 19124 --- [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
 2024-04-17T22:54:32.788+03:00  INFO 19124 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
 2024-04-17T22:54:32.798+03:00  INFO 19124 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2024-04-17T22:58:00.993+03:00  INFO 20232 --- [restartedMain] c.coinsearch.CryptoserviceApplication    : Starting CryptoserviceApplication using Java 21.0.2 with PID 20232 (C:\Users\d\IdeaProjects\Cryptocurrency\target\classes started by d in C:\Users\d\IdeaProjects\Cryptocurrency)
+2024-04-17T22:58:00.997+03:00  INFO 20232 --- [restartedMain] c.coinsearch.CryptoserviceApplication    : No active profile set, falling back to 1 default profile: "default"
+2024-04-17T22:58:01.062+03:00  INFO 20232 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2024-04-17T22:58:01.062+03:00  INFO 20232 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2024-04-17T22:58:01.980+03:00  INFO 20232 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-04-17T22:58:02.032+03:00  INFO 20232 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 45 ms. Found 3 JPA repository interfaces.
+2024-04-17T22:58:02.930+03:00  INFO 20232 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2024-04-17T22:58:02.949+03:00  INFO 20232 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-04-17T22:58:02.949+03:00  INFO 20232 --- [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.18]
+2024-04-17T22:58:03.016+03:00  INFO 20232 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-04-17T22:58:03.016+03:00  INFO 20232 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1954 ms
+2024-04-17T22:58:03.246+03:00  INFO 20232 --- [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-04-17T22:58:03.306+03:00  INFO 20232 --- [restartedMain] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.4.1.Final
+2024-04-17T22:58:03.341+03:00  INFO 20232 --- [restartedMain] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2024-04-17T22:58:03.589+03:00  INFO 20232 --- [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-04-17T22:58:03.614+03:00  INFO 20232 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2024-04-17T22:58:03.780+03:00  INFO 20232 --- [restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@6fdf3fb0
+2024-04-17T22:58:03.782+03:00  INFO 20232 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2024-04-17T22:58:03.812+03:00  WARN 20232 --- [restartedMain] org.hibernate.orm.deprecation            : HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2024-04-17T22:58:04.756+03:00  INFO 20232 --- [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-04-17T22:58:04.844+03:00  INFO 20232 --- [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-04-17T22:58:05.521+03:00  INFO 20232 --- [restartedMain] o.s.d.j.r.query.QueryEnhancerFactory     : Hibernate is in classpath; If applicable, HQL parser will be used.
+2024-04-17T22:58:06.185+03:00  WARN 20232 --- [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-04-17T22:58:07.513+03:00  INFO 20232 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2024-04-17T22:58:07.553+03:00  INFO 20232 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path ''
+2024-04-17T22:58:07.565+03:00  INFO 20232 --- [restartedMain] c.coinsearch.CryptoserviceApplication    : Started CryptoserviceApplication in 7.088 seconds (process running for 7.641)
+2024-04-17T22:58:24.951+03:00  INFO 20232 --- [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-04-17T22:58:24.956+03:00  INFO 20232 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2024-04-17T22:58:24.962+03:00  INFO 20232 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
