@@ -13,6 +13,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 
 import java.util.Arrays;
+import java.util.HashSet;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -36,7 +37,7 @@ class ChainControllerTest {
     @Test
     void testCreate() {
         // Mock data
-        Chain chain = new Chain();
+        Chain chain = new Chain(1L, "test", new HashSet<>());
         when(chainService.createChain(chain)).thenReturn(chain);
 
         // Test
@@ -52,7 +53,7 @@ class ChainControllerTest {
     void testGetChainById() {
         // Mock data
         Long chainId = 1L;
-        Chain mockChain = new Chain();
+        Chain mockChain = new Chain(1L, "test", new HashSet<>());
         when(chainService.getChainById(chainId)).thenReturn(mockChain);
 
         // Test
@@ -66,7 +67,7 @@ class ChainControllerTest {
     @Test
     void testGetAllChains() {
         // Mock data
-        List<Chain> mockChains = Arrays.asList(new Chain(), new Chain());
+        List<Chain> mockChains = Arrays.asList(new Chain(1L, "test", new HashSet<>()), new Chain(1L, "test", new HashSet<>()));
         when(chainService.getAllChains()).thenReturn(mockChains);
 
         // Test
@@ -82,7 +83,7 @@ class ChainControllerTest {
     void testUpdateChain() {
         // Mock data
         Long chainId = 1L;
-        Chain updatedChain = new Chain();
+        Chain updatedChain = new Chain(1L, "test", new HashSet<>());
         when(chainService.updateChain(chainId, updatedChain)).thenReturn(updatedChain);
 
         // Test
@@ -98,7 +99,7 @@ class ChainControllerTest {
         // Mock data
         Long chainId = 1L;
         Long cryptoId = 1L;
-        Chain chain = new Chain();
+        Chain chain = new Chain(1L, "test", new HashSet<>());
         CryptoData cryptoData = new CryptoData();
         when(chainService.getChainById(chainId)).thenReturn(chain);
         when(coinCapService.getCryptoDataById(cryptoId)).thenReturn(cryptoData);
