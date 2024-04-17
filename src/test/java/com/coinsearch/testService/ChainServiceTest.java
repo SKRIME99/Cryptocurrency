@@ -8,9 +8,11 @@ import com.coinsearch.repository.ChainRepository;
 import com.coinsearch.service.ChainService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
+import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import java.util.HashSet;
@@ -21,7 +23,7 @@ import static java.util.Arrays.*;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
 
-@SpringBootTest(classes = ChainServiceTest.class)
+@ExtendWith(MockitoExtension.class)
 class ChainServiceTest {
 
     @Mock
