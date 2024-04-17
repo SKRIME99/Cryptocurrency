@@ -36,7 +36,7 @@ class ChainControllerTest {
     @Test
     void testCreate() {
         // Mock data
-        Chain chain = new Chain();
+        Chain chain = new Chain(1L, "test");
         when(chainService.createChain(chain)).thenReturn(chain);
 
         // Test
@@ -52,7 +52,7 @@ class ChainControllerTest {
     void testGetChainById() {
         // Mock data
         Long chainId = 1L;
-        Chain mockChain = new Chain();
+        Chain mockChain = new Chain(1L, "test");
         when(chainService.getChainById(chainId)).thenReturn(mockChain);
 
         // Test
@@ -66,7 +66,7 @@ class ChainControllerTest {
     @Test
     void testGetAllChains() {
         // Mock data
-        List<Chain> mockChains = Arrays.asList(new Chain(), new Chain());
+        List<Chain> mockChains = Arrays.asList(new Chain(1L, "test"), new Chain(1L, "test"));
         when(chainService.getAllChains()).thenReturn(mockChains);
 
         // Test
@@ -82,7 +82,7 @@ class ChainControllerTest {
     void testUpdateChain() {
         // Mock data
         Long chainId = 1L;
-        Chain updatedChain = new Chain();
+        Chain updatedChain = new Chain((1L, "test"));
         when(chainService.updateChain(chainId, updatedChain)).thenReturn(updatedChain);
 
         // Test
@@ -98,7 +98,7 @@ class ChainControllerTest {
         // Mock data
         Long chainId = 1L;
         Long cryptoId = 1L;
-        Chain chain = new Chain();
+        Chain chain = new Chain((1L, "test"));
         CryptoData cryptoData = new CryptoData();
         when(chainService.getChainById(chainId)).thenReturn(chain);
         when(coinCapService.getCryptoDataById(cryptoId)).thenReturn(cryptoData);
