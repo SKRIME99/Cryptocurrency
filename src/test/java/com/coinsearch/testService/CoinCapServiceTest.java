@@ -48,15 +48,7 @@ class CoinCapServiceTest {
     @InjectMocks
     private CoinCapService coinCapService;
 
-    @BeforeEach
-    void setUp() {
-        MockitoAnnotations.openMocks(this);
-    }
 
-    @Test
-    void contextLoads(){
-
-    }
 
     @Test
     void testCreateCryptocurrency() {

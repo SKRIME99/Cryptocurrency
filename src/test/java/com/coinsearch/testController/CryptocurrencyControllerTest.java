@@ -29,15 +29,7 @@ class CryptocurrencyControllerTest {
     @InjectMocks
     private CryptocurrencyController cryptocurrencyController;
 
-    @BeforeEach
-    public void setUp() {
-        MockitoAnnotations.openMocks(this);
-    }
 
-    @Test
-    void contextLoads(){
-
-    }
     @Test
     void testGetAllCryptoData() {
         // Mock data

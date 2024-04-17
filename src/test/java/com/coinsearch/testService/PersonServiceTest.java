@@ -32,15 +32,7 @@ class PersonServiceTest {
     @InjectMocks
     private PersonService personService;
 
-    @BeforeEach
-    public void setUp() {
-        MockitoAnnotations.openMocks(this);
-    }
 
-    @Test
-    void contextLoads(){
-
-    }
     @Test
     void testCreatePerson() {
         // Mock data

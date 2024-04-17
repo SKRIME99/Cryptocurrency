@@ -35,15 +35,7 @@ class ChainServiceTest {
     @InjectMocks
     private ChainService chainService;
 
-    @BeforeEach
-    public void setUp() {
-        MockitoAnnotations.openMocks(this);
-    }
 
-    @Test
-    void contextLoads(){
-
-    }
     @Test
     void testCreateChain() {
         // Mock data

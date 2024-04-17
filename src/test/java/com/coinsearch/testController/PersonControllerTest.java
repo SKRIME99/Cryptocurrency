@@ -35,15 +35,7 @@ class PersonControllerTest {
     @InjectMocks
     private PersonController personController;
 
-    @BeforeEach
-    public void setUp() {
-        MockitoAnnotations.openMocks(this);
-    }
 
-    @Test
-    void contextLoads(){
-
-    }
     @Test
     void testCreate() {
         // Mock data
