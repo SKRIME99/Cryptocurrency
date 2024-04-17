@@ -15,6 +15,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 
 import java.util.Arrays;
+import java.util.HashSet;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -40,7 +41,7 @@ class PersonControllerTest {
     @Test
     void testCreate() {
         // Mock data
-        Person person = new Person();
+        Person person = new Person(1L, "test", new HashSet<>());
         when(personService.createPerson(person)).thenReturn(person);
 
         // Test
@@ -56,7 +57,7 @@ class PersonControllerTest {
     void testGetPersonById() {
         // Mock data
         Long personId = 1L;
-        Person mockPerson = new Person();
+        Person mockPerson = new Person(1L, "test", new HashSet<>());
         when(personService.getPersonById(personId)).thenReturn(mockPerson);
 
         // Test
@@ -70,7 +71,7 @@ class PersonControllerTest {
     @Test
     void testGetAllPeople() {
         // Mock data
-        List<Person> mockPeople = Arrays.asList(new Person(), new Person());
+        List<Person> mockPeople = Arrays.asList(new Person(1L, "test", new HashSet<>()), new Person(2L, "test", new HashSet<>()));
         when(personService.getAllPeople()).thenReturn(mockPeople);
 
         // Test
@@ -86,7 +87,7 @@ class PersonControllerTest {
     void testGetAllPeopleWithCrypto() {
         // Mock data
         String crypto = "bitcoin";
-        List<Person> mockPeople = Arrays.asList(new Person(), new Person());
+        List<Person> mockPeople = Arrays.asList(new Person(1L, "test", new HashSet<>()), new Person(2L, "test", new HashSet<>()));
         when(personService.getAllPeopleWithCrypto(crypto)).thenReturn(mockPeople);
 
         // Test
@@ -102,7 +103,7 @@ class PersonControllerTest {
     void testUpdatePerson() {
         // Mock data
         Long personId = 1L;
-        Person updatedPerson = new Person();
+        Person updatedPerson = new Person(1L, "test", new HashSet<>());
         when(personService.updatePerson(personId, updatedPerson)).thenReturn(updatedPerson);
 
         // Test
@@ -118,7 +119,7 @@ class PersonControllerTest {
         // Mock data
         Long personId = 1L;
         Long cryptoId = 1L;
-        Person person = new Person();
+        Person person = new Person(1L, "test", new HashSet<>());
         CryptoData cryptoData = new CryptoData();
         when(personService.getPersonById(personId)).thenReturn(person);
         when(coinCapService.getCryptoDataById(cryptoId)).thenReturn(cryptoData);

@@ -41,5 +41,8 @@ public class CryptoData {
     @ManyToMany(mappedBy = "cryptocurrencies")
     private Set<Person> persons;
 
+    public CryptoData(Long id){
+        this.crytpoId = id;
+    }
 
 }

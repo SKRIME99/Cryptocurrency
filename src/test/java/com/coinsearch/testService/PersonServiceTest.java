@@ -38,7 +38,7 @@ class PersonServiceTest {
     @Test
     void testCreatePerson() {
         // Mock data
-        Person person = new Person();
+        Person person = new Person(1L, "test", new HashSet<>());
         when(personRepository.save(person)).thenReturn(person);
 
         // Test
@@ -53,7 +53,7 @@ class PersonServiceTest {
     void testGetPersonById() {
         // Mock data
         long personId = 1L;
-        Person expectedPerson = new Person();
+        Person expectedPerson = new Person(1L, "test", new HashSet<>());
         when(cache.getFromCache(anyString())).thenReturn(null);
         when(personRepository.findById(Math.toIntExact(personId))).thenReturn(Optional.of(expectedPerson));
 
@@ -98,7 +98,7 @@ class PersonServiceTest {
     void testUpdatePerson() {
         // Mock data
         Long personId = 1L;
-        Person updatedPerson = new Person();
+        Person updatedPerson = new Person(1L, "test", new HashSet<>());
         updatedPerson.setId(personId);
         when(personRepository.findById(Math.toIntExact(personId))).thenReturn(Optional.of(updatedPerson));
         when(personRepository.save(updatedPerson)).thenReturn(updatedPerson);
@@ -117,8 +117,8 @@ class PersonServiceTest {
     void testDeletePerson() {
         // Mock data
         long personId = 1L;
-        Person person = new Person();
-        CryptoData cryptoData = new CryptoData();
+        Person person = new Person(1L, "test", new HashSet<>());
+        CryptoData cryptoData = new CryptoData(3L);
         person.setCryptocurrencies(new HashSet<>(List.of(cryptoData)));
         when(personRepository.findById(Math.toIntExact(personId))).thenReturn(Optional.of(person));
 

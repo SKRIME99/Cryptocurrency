@@ -35,7 +35,7 @@ class CryptocurrencyControllerTest {
     @Test
     void testGetAllCryptoData() {
         // Mock data
-        List<CryptoData> mockCryptoData = Arrays.asList(new CryptoData(), new CryptoData());
+        List<CryptoData> mockCryptoData = Arrays.asList(new CryptoData(1L), new CryptoData(2L));
         when(coinCapService.getAllCryptoData()).thenReturn(mockCryptoData);
 
         // Test
@@ -50,7 +50,7 @@ class CryptocurrencyControllerTest {
     @Test
     void testGetCryptoDataById() {
         // Mock data
-        CryptoData mockCryptoData = new CryptoData();
+        CryptoData mockCryptoData = new CryptoData(1L);
         String name = "bitcoin";
         when(coinCapService.getCryptoDataByName(name)).thenReturn(mockCryptoData);
 
@@ -66,7 +66,7 @@ class CryptocurrencyControllerTest {
     void testCreate() {
         // Mock data
         String cryptoCurrency = "bitcoin";
-        CryptoData mockCryptoData = new CryptoData();
+        CryptoData mockCryptoData = new CryptoData(1L);
         when(coinCapService.createCryptocurrency(cryptoCurrency)).thenReturn(mockCryptoData);
 
         // Test
