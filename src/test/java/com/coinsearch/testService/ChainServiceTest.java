@@ -4,6 +4,7 @@ import com.coinsearch.component.Cache;
 import com.coinsearch.exception.EntityNotFoundException;
 import com.coinsearch.model.Chain;
 import com.coinsearch.model.CryptoData;
+import com.coinsearch.model.Person;
 import com.coinsearch.repository.ChainRepository;
 import com.coinsearch.service.ChainService;
 import org.junit.jupiter.api.BeforeEach;
@@ -18,6 +19,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Optional;
+import java.util.Set;
 
 import static java.util.Arrays.*;
 import static org.junit.jupiter.api.Assertions.*;
@@ -104,7 +106,8 @@ class ChainServiceTest {
         // Mock data
         long chainId = 1L;
         Chain chain = new Chain(1L, "test", new HashSet<>());
-        CryptoData cryptoData = new CryptoData(3L);
+        Set<Person> set = new HashSet<>(Set.of(new Person(1L, "test", new HashSet<>()), new Person(2L, "test", new HashSet<>()),new Person(3L, "test", new HashSet<>())));
+        CryptoData cryptoData = new CryptoData(1L, set, new Chain(1L, "test", new HashSet<>()));
         chain.setCryptocurrencies(new HashSet<>(List.of(cryptoData)));
         when(chainRepository.findById(Math.toIntExact(chainId))).thenReturn(Optional.of(chain));
 

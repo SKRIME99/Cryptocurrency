@@ -2,6 +2,7 @@ package com.coinsearch.testService;
 
 import com.coinsearch.component.Cache;
 import com.coinsearch.exception.EntityNotFoundException;
+import com.coinsearch.model.Chain;
 import com.coinsearch.model.CryptoData;
 import com.coinsearch.model.Person;
 import com.coinsearch.repository.PersonRepository;
@@ -116,7 +117,8 @@ class PersonServiceTest {
         // Mock data
         long personId = 1L;
         Person person = new Person(1L, "test", new HashSet<>());
-        CryptoData cryptoData = new CryptoData(3L);
+        Set<Person> set = new HashSet<>(Set.of(new Person(1L, "test", new HashSet<>()), new Person(2L, "test", new HashSet<>()),new Person(3L, "test", new HashSet<>())));
+        CryptoData cryptoData = new CryptoData(1L, set, new Chain(1L, "test", new HashSet<>()));
         person.setCryptocurrencies(new HashSet<>(List.of(cryptoData)));
         when(personRepository.findById(Math.toIntExact(personId))).thenReturn(Optional.of(person));
 

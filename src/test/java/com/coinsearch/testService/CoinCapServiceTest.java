@@ -21,6 +21,7 @@ import org.springframework.web.client.RestTemplate;
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.ArgumentMatchers.any;
@@ -54,7 +55,8 @@ class CoinCapServiceTest {
     void testCreateCryptocurrency() {
         // Mock data
         String cryptocurrency = "bitcoin";
-        CryptoData cryptoData = new CryptoData(3L);
+        Set<Person> set = new HashSet<>(Set.of(new Person(1L, "test", new HashSet<>()), new Person(2L, "test", new HashSet<>()),new Person(3L, "test", new HashSet<>())));
+        CryptoData cryptoData = new CryptoData(1L, set, new Chain(1L, "test", new HashSet<>()));
         when(restTemplate.getForObject(anyString(), eq(CryptoData.class))).thenReturn(cryptoData);
         when(cryptoRepository.save(cryptoData)).thenReturn(cryptoData);
 
@@ -70,8 +72,9 @@ class CoinCapServiceTest {
     void testAddList() {
         // Mock data
         List<String> cryptoCurrencies = Arrays.asList("bitcoin", "ethereum");
-        CryptoData bitcoin = new CryptoData(3L);
-        CryptoData ethereum = new CryptoData(3L);
+        Set<Person> set = new HashSet<>(Set.of(new Person(1L, "test", new HashSet<>()), new Person(2L, "test", new HashSet<>()),new Person(3L, "test", new HashSet<>())));
+        CryptoData bitcoin = new CryptoData(1L, set, new Chain(1L, "test", new HashSet<>()));
+        CryptoData ethereum = new CryptoData(1L, set, new Chain(1L, "test", new HashSet<>()));
         when(cryptoRepository.save(any())).thenReturn(bitcoin, ethereum);
 
         // Test
@@ -88,7 +91,8 @@ class CoinCapServiceTest {
     void testGetCryptoDataById() {
         // Mock data
         long cryptoId = 1;
-        CryptoData cryptoData = new CryptoData(3L);
+        Set<Person> set = new HashSet<>(Set.of(new Person(1L, "test", new HashSet<>()), new Person(2L, "test", new HashSet<>()),new Person(3L, "test", new HashSet<>())));
+        CryptoData cryptoData = new CryptoData(1L, set, new Chain(1L, "test", new HashSet<>()));
         when(cryptoRepository.findById((int) cryptoId)).thenReturn(java.util.Optional.of(cryptoData));
 
         // Test
@@ -102,7 +106,8 @@ class CoinCapServiceTest {
     void testGetCryptoDataByName() {
         // Mock data
         String name = "bitcoin";
-        CryptoData cryptoData = new CryptoData(3L);
+        Set<Person> set = new HashSet<>(Set.of(new Person(1L, "test", new HashSet<>()), new Person(2L, "test", new HashSet<>()),new Person(3L, "test", new HashSet<>())));
+        CryptoData cryptoData = new CryptoData(1L, set, new Chain(1L, "test", new HashSet<>()));
         when(cache.getFromCache(anyString())).thenReturn(null);
         when(cryptoRepository.findByName(name)).thenReturn(cryptoData);
 
@@ -131,7 +136,8 @@ class CoinCapServiceTest {
     void testUpdateCryptoData() {
         // Mock data
         long cryptoId = 1;
-        CryptoData cryptoData = new CryptoData(3L);
+        Set<Person> set = new HashSet<>(Set.of(new Person(1L, "test", new HashSet<>()), new Person(2L, "test", new HashSet<>()),new Person(3L, "test", new HashSet<>())));
+        CryptoData cryptoData = new CryptoData(1L, set, new Chain(1L, "test", new HashSet<>()));
         when(cryptoRepository.findById((int) cryptoId)).thenReturn(java.util.Optional.of(cryptoData));
         when(cryptoRepository.save(cryptoData)).thenReturn(cryptoData);
 
@@ -146,7 +152,8 @@ class CoinCapServiceTest {
     void testDeleteCrypto() {
         // Mock data
         long cryptoId = 1;
-        CryptoData cryptoData = new CryptoData(3L);
+        Set<Person> set = new HashSet<>(Set.of(new Person(1L, "test", new HashSet<>()), new Person(2L, "test", new HashSet<>()),new Person(3L, "test", new HashSet<>())));
+        CryptoData cryptoData = new CryptoData(1L, set, new Chain(1L, "test", new HashSet<>()));
         when(cryptoRepository.findById((int) cryptoId)).thenReturn(java.util.Optional.of(cryptoData));
         doNothing().when(cache).removeFromCache(anyString());
         doNothing().when(cryptoRepository).deleteById((int) cryptoId);
@@ -160,7 +167,8 @@ class CoinCapServiceTest {
         // Mock data
         long cryptoId = 1;
         long personId = 1;
-        CryptoData cryptoData = new CryptoData(3L);
+        Set<Person> set = new HashSet<>(Set.of(new Person(1L, "test", new HashSet<>()), new Person(2L, "test", new HashSet<>()),new Person(3L, "test", new HashSet<>())));
+        CryptoData cryptoData = new CryptoData(1L, set, new Chain(1L, "test", new HashSet<>()));
         Person person = new Person(1L, "test", new HashSet<>());
         person.getCryptocurrencies().add(cryptoData);
         when(cryptoRepository.findById((int) cryptoId)).thenReturn(java.util.Optional.of(cryptoData));
@@ -177,7 +185,8 @@ class CoinCapServiceTest {
         // Mock data
         long cryptoId = 1;
         long chainId = 1;
-        CryptoData cryptoData = new CryptoData(3L);
+        Set<Person> set = new HashSet<>(Set.of(new Person(1L, "test", new HashSet<>()), new Person(2L, "test", new HashSet<>()),new Person(3L, "test", new HashSet<>())));
+        CryptoData cryptoData = new CryptoData(1L, set, new Chain(1L, "test", new HashSet<>()));
         Chain chain = new Chain(1L, "test", new HashSet<>());
         chain.getCryptocurrencies().add(cryptoData);
         when(cryptoRepository.findById((int) cryptoId)).thenReturn(java.util.Optional.of(cryptoData));
