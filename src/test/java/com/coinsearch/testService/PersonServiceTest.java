@@ -18,7 +18,7 @@ import java.util.*;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
 
-@SpringBootTest
+@SpringBootTest(classes = PersonServiceTest.class)
 class PersonServiceTest {
 
     @Mock

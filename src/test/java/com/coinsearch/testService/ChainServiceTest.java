@@ -21,7 +21,7 @@ import static java.util.Arrays.*;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
 
-@SpringBootTest
+@SpringBootTest(classes = ChainServiceTest.class)
 class ChainServiceTest {
 
     @Mock
