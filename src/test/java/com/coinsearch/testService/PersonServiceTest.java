@@ -38,6 +38,10 @@ class PersonServiceTest {
     }
 
     @Test
+    void contextLoads(){
+
+    }
+    @Test
     void testCreatePerson() {
         // Mock data
         Person person = new Person(1L, "test", new HashSet<>());

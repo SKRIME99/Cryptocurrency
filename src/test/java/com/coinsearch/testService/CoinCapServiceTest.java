@@ -54,6 +54,11 @@ class CoinCapServiceTest {
     }
 
     @Test
+    void contextLoads(){
+
+    }
+
+    @Test
     void testCreateCryptocurrency() {
         // Mock data
         String cryptocurrency = "bitcoin";

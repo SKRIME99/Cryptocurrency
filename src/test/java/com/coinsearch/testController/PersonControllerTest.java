@@ -41,6 +41,10 @@ class PersonControllerTest {
     }
 
     @Test
+    void contextLoads(){
+
+    }
+    @Test
     void testCreate() {
         // Mock data
         Person person = new Person(1L, "test", new HashSet<>());

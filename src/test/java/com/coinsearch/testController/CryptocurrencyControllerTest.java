@@ -35,6 +35,10 @@ class CryptocurrencyControllerTest {
     }
 
     @Test
+    void contextLoads(){
+
+    }
+    @Test
     void testGetAllCryptoData() {
         // Mock data
         List<CryptoData> mockCryptoData = Arrays.asList(new CryptoData(1L), new CryptoData(2L));

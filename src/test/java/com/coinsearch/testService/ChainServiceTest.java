@@ -41,6 +41,10 @@ class ChainServiceTest {
     }
 
     @Test
+    void contextLoads(){
+
+    }
+    @Test
     void testCreateChain() {
         // Mock data
         Chain chain = new Chain(1L, "test", new HashSet<>());
