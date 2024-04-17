@@ -47,7 +47,7 @@ public class PersonController {
     }
 
     @PutMapping("/{person_id}/crypto/{crypto_id}")
-    Person addCryptoToPerson(@PathVariable("person_id") Long personId, @PathVariable("crypto_id") Long cryptoId){
+    public Person addCryptoToPerson(@PathVariable("person_id") Long personId, @PathVariable("crypto_id") Long cryptoId){
         Person person = personService.getPersonById(personId);
         CryptoData cryptoData = coinCapService.getCryptoDataById(cryptoId);
         person.addCrypto(cryptoData);

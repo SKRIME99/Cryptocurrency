@@ -44,6 +44,12 @@ public class CryptocurrencyController {
         return new ResponseEntity<>(cryptoData, HttpStatus.CREATED);
     }
 
+    @PostMapping("/bulk")
+    public ResponseEntity<List<CryptoData>> bulkOperation(@RequestBody List<String> cryptoCurrencies) {
+        List<CryptoData> result = coinCapService.addList(cryptoCurrencies);
+        return new ResponseEntity<>(result, HttpStatus.CREATED);
+    }
+
     @DeleteMapping("/{crypto_id}")
     public ResponseEntity<String> deleteCrypto(@PathVariable("crypto_id") Long cryptoId) {
         coinCapService.deleteCrypto(cryptoId);

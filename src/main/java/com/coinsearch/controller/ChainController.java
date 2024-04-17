@@ -41,7 +41,7 @@ public class ChainController {
     }
 
     @PutMapping("/{chain_id}/crypto/{crypto_id}")
-    Chain addCryptoToChain(@PathVariable("chain_id") Long chainId, @PathVariable("crypto_id") Long cryptoId){
+    public Chain addCryptoToChain(@PathVariable("chain_id") Long chainId, @PathVariable("crypto_id") Long cryptoId){
         Chain chain = chainService.getChainById(chainId);
         CryptoData cryptoData = coinCapService.getCryptoDataById(cryptoId);
         chain.addCrypto(cryptoData);
