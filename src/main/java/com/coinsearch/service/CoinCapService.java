@@ -33,7 +33,7 @@ public class CoinCapService {
 
     private final List<String> allowedCryptocurrencies = Arrays.asList("bitcoin", "ethtreum", "solana", "tether", "xrp", "cardano", "dogecoin", "polkadot", "tron", "litecoin");
 
-    private boolean isValidCryptoCurrency(String cryptoCurrency) {
+    public boolean isValidCryptoCurrency(String cryptoCurrency) {
         return allowedCryptocurrencies.contains(cryptoCurrency.toLowerCase());
     }
 
@@ -148,4 +148,6 @@ public class CoinCapService {
         cryptoData.setChain(null);
         chainRepository.save(chain);
     }
+
+
 }

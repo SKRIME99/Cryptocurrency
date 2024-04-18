@@ -4,24 +4,19 @@ import com.coinsearch.component.Cache;
 import com.coinsearch.exception.EntityNotFoundException;
 import com.coinsearch.model.Chain;
 import com.coinsearch.model.CryptoData;
-import com.coinsearch.model.Person;
 import com.coinsearch.repository.ChainRepository;
 import com.coinsearch.service.ChainService;
+
+
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
-import org.mockito.MockitoAnnotations;
 import org.mockito.junit.jupiter.MockitoExtension;
-import org.springframework.boot.test.context.SpringBootTest;
 
-import java.util.HashSet;
-import java.util.List;
-import java.util.Optional;
-import java.util.Set;
+import java.util.*;
 
-import static java.util.Arrays.*;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
 
@@ -37,72 +32,130 @@ class ChainServiceTest {
     @InjectMocks
     private ChainService chainService;
 
+    private Chain chain;
+
+    @BeforeEach
+    void setUp() {
+        chain = new Chain();
+        chain.setId(1L);
+        chain.setName("Ethereum");
+        CryptoData crypto = new CryptoData(1L);
+        chain.setCryptocurrencies(new HashSet<>(Collections.singletonList(crypto)));
+    }
 
     @Test
     void testCreateChain() {
-        // Mock data
-        Chain chain = new Chain();
-        chain.setId(1L);
         when(chainRepository.save(chain)).thenReturn(chain);
-
-        // Test
-        Chain result = chainService.createChain(chain);
-
-        // Verify
-        assertEquals(chain, result);
+        Chain createdChain = chainService.createChain(chain);
+        assertNotNull(createdChain);
+        assertEquals(chain, createdChain);
         verify(chainRepository, times(1)).save(chain);
     }
 
     @Test
     void testGetChainById() {
-        // Mock data
-        long chainId = 1L;
-        Chain expectedChain = new Chain();
-        expectedChain.setId(1L);
-        when(cache.getFromCache(anyString())).thenReturn(null);
-        when(chainRepository.findById(Math.toIntExact(chainId))).thenReturn(Optional.of(expectedChain));
+        String cacheKey = "chain-1";
+        when(cache.getFromCache(cacheKey)).thenReturn(null);
+        when(chainRepository.findById(1)).thenReturn(Optional.of(chain));
+        doNothing().when(cache).addToCache(cacheKey, chain);
 
-        // Test
-        Chain result = chainService.getChainById(chainId);
-
-        // Verify
-        assertEquals(expectedChain, result);
-        verify(cache, times(1)).addToCache(anyString(), eq(expectedChain));
+        Chain fetchedChain = chainService.getChainById(1L);
+        assertNotNull(fetchedChain);
+        assertEquals(chain, fetchedChain);
+        verify(chainRepository, times(1)).findById(1);
+        verify(cache, times(1)).getFromCache(cacheKey);
+        verify(cache, times(1)).addToCache(cacheKey, chain);
     }
 
+    @Test
+    void testGetChainByIdFromCache() {
+        String cacheKey = "chain-1";
+        when(cache.getFromCache(cacheKey)).thenReturn(chain);
+
+        Chain fetchedChain = chainService.getChainById(1L);
+        assertNotNull(fetchedChain);
+        assertEquals(chain, fetchedChain);
+        verify(chainRepository, never()).findById(1);
+        verify(cache, times(1)).getFromCache(cacheKey);
+        verify(cache, never()).addToCache(cacheKey, chain);
+    }
+
+    @Test
+    void testGetAllChains() {
+        List<Chain> chains = new ArrayList<>();
+        chains.add(chain);
+        when(chainRepository.findAll()).thenReturn(chains);
+
+        List<Chain> fetchedChains = chainService.getAllChains();
+        assertNotNull(fetchedChains);
+        assertEquals(1, fetchedChains.size());
+        assertEquals(chain, fetchedChains.get(0));
+        verify(chainRepository, times(1)).findAll();
+    }
 
     @Test
     void testUpdateChain() {
-        // Mock data
         Long chainId = 1L;
+        String cacheKey = "chain-1";
+
+        Chain existingChain = new Chain();
+        existingChain.setId(chainId);
+        existingChain.setName("Ethereum");
+        existingChain.setCryptocurrencies(new HashSet<>());
+
         Chain updatedChain = new Chain();
         updatedChain.setId(chainId);
-        when(chainRepository.findById(Math.toIntExact(chainId))).thenReturn(Optional.of(updatedChain));
-        when(chainRepository.save(updatedChain)).thenReturn(updatedChain);
+        updatedChain.setName("Ethereum 2.0");
+        updatedChain.setCryptocurrencies(new HashSet<>());
 
-        // Test
-        Chain result = chainService.updateChain(chainId, updatedChain);
+        when(chainRepository.findById(Math.toIntExact(chainId))).thenReturn(Optional.of(existingChain));
+        when(chainRepository.save(any(Chain.class))).thenReturn(updatedChain);
+        doNothing().when(cache).removeFromCache(cacheKey);
+        doNothing().when(cache).addToCache(any(String.class), any(Chain.class));
 
-        // Verify
-        assertEquals(updatedChain, result);
-        verify(chainRepository, times(1)).save(updatedChain);
-        verify(cache, times(1)).removeFromCache(anyString());
-        verify(cache, times(1)).addToCache(anyString(), eq(updatedChain));
+        Chain returnedChain = chainService.updateChain(chainId, updatedChain);
+
+        assertNotNull(returnedChain);
+        assertEquals("Ethereum 2.0", returnedChain.getName());
+        verify(chainRepository, times(1)).findById(Math.toIntExact(chainId));
+        verify(chainRepository, times(1)).save(any(Chain.class));
+        verify(cache, times(1)).removeFromCache(cacheKey);
+        verify(cache, times(1)).addToCache(any(String.class), any(Chain.class));
     }
 
     @Test
     void testDeleteChain() {
-        // Mock data
-        long chainId = 1L;
-        Chain chain = new Chain(1L, "test", new HashSet<>());
+        String cacheKey = "chain-1";
 
-        when(chainRepository.findById(Math.toIntExact(chainId))).thenReturn(Optional.of(chain));
+        when(chainRepository.findById(1)).thenReturn(Optional.of(chain));
+        doNothing().when(cache).removeFromCache(cacheKey);
+        doNothing().when(chainRepository).deleteById(1);
 
-        // Test
-        assertDoesNotThrow(() -> chainService.deleteChain(chainId));
+        chainService.deleteChain(1L);
 
-        // Verify
-        verify(chainRepository, times(1)).deleteById(Math.toIntExact(chainId));
+        verify(chainRepository, times(1)).findById(1);
+        verify(cache, times(1)).removeFromCache(cacheKey);
+        verify(chainRepository, times(1)).deleteById(1);
     }
 
+    @Test
+    void testGetChainByIdNotFound() {
+        when(chainRepository.findById(1)).thenReturn(Optional.empty());
+        assertThrows(EntityNotFoundException.class, () -> chainService.getChainById(1L));
+        verify(chainRepository, times(1)).findById(1);
+    }
+
+    @Test
+    void testUpdateChainNotFound() {
+        when(chainRepository.findById(1)).thenReturn(Optional.empty());
+        assertThrows(EntityNotFoundException.class, () -> chainService.updateChain(1L, new Chain()));
+        verify(chainRepository, times(1)).findById(1);
+    }
+
+    @Test
+    void testDeleteChainNotFound() {
+        when(chainRepository.findById(1)).thenReturn(Optional.empty());
+        assertThrows(EntityNotFoundException.class, () -> chainService.deleteChain(1L));
+        verify(chainRepository, times(1)).findById(1);
+    }
 }
