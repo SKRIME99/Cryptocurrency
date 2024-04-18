@@ -64,11 +64,11 @@ class CoinCapServiceTest {
 
         person = new Person();
         person.setId(1L);
-        person.setCryptocurrencies(new HashSet<>(Arrays.asList(cryptoData)));
+        person.setCryptocurrencies(new HashSet<>(Collections.singletonList(cryptoData)));
 
         chain = new Chain();
         chain.setId(1L);
-        chain.setCryptocurrencies(new HashSet<>(Arrays.asList(cryptoData)));
+        chain.setCryptocurrencies(new HashSet<>(Collections.singletonList(cryptoData)));
     }
 
     @Test
@@ -113,7 +113,7 @@ class CoinCapServiceTest {
     @Test
     void testGetAllCryptoData() {
         when(cryptoRepository.findAll())
-                .thenReturn(Arrays.asList(cryptoData));
+                .thenReturn(Collections.singletonList(cryptoData));
 
         List<CryptoData> allCryptoData = coinCapService.getAllCryptoData();
 
@@ -195,7 +195,7 @@ class CoinCapServiceTest {
     @Test
     void testDeleteCryptoWithPersonsAndChain() {
         cryptoData.setChain(new Chain());
-        cryptoData.setPersons(new HashSet<>(Arrays.asList(new Person())));
+        cryptoData.setPersons(new HashSet<>(List.of(new Person())));
 
         when(cryptoRepository.findById(anyInt())).thenReturn(Optional.of(cryptoData));
 
@@ -208,7 +208,7 @@ class CoinCapServiceTest {
 
     @Test
     void testDeleteCryptoWithPersons() {
-        cryptoData.setPersons(new HashSet<>(Arrays.asList(new Person())));
+        cryptoData.setPersons(new HashSet<>(List.of(new Person())));
 
         when(cryptoRepository.findById(anyInt())).thenReturn(Optional.of(cryptoData));
 
@@ -272,7 +272,7 @@ class CoinCapServiceTest {
     void testDeleteCryptoFromChain() {
         Chain chain = new Chain();
         chain.setId(3L);
-        chain.setCryptocurrencies(new HashSet<>(Arrays.asList(cryptoData)));
+        chain.setCryptocurrencies(new HashSet<>(Collections.singletonList(cryptoData)));
 
         when(chainRepository.findById(anyInt())).thenReturn(Optional.of(chain));
         when(cryptoRepository.findById(anyInt())).thenReturn(Optional.of(cryptoData));
@@ -302,7 +302,7 @@ class CoinCapServiceTest {
     @Test
     void testDeleteCryptoFromChainCryptoNotFound() {
         Chain chain = new Chain();
-        chain.setCryptocurrencies(new HashSet<>(Arrays.asList(cryptoData)));
+        chain.setCryptocurrencies(new HashSet<>(Collections.singletonList(cryptoData)));
 
         when(cryptoRepository.findById(anyInt())).thenReturn(Optional.empty());
 

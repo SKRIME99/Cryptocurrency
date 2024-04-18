@@ -7,7 +7,6 @@ import com.coinsearch.model.CryptoData;
 import com.coinsearch.repository.ChainRepository;
 import com.coinsearch.service.ChainService;
 
-
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;

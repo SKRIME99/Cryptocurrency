@@ -2,18 +2,11 @@ package com.coinsearch.testService;
 
 import com.coinsearch.component.Cache;
 import com.coinsearch.exception.EntityNotFoundException;
-import com.coinsearch.model.Chain;
 import com.coinsearch.model.CryptoData;
 import com.coinsearch.model.Person;
 import com.coinsearch.repository.PersonRepository;
 import com.coinsearch.service.PersonService;
 
-import com.coinsearch.component.Cache;
-import com.coinsearch.exception.EntityNotFoundException;
-import com.coinsearch.model.CryptoData;
-import com.coinsearch.model.Person;
-import com.coinsearch.repository.PersonRepository;
-import com.coinsearch.service.PersonService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -26,9 +19,7 @@ import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Optional;
-import java.util.Set;
 
-import static javax.management.Query.eq;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertThrows;
@@ -91,7 +82,7 @@ class PersonServiceTest {
 
     @Test
     void testGetPersonById_CacheMiss() {
-        Long personId = 1L;
+        long personId = 1L;
         String cacheKey = "person-" + personId;
 
         when(cache.getFromCache(cacheKey)).thenReturn(null);
@@ -109,7 +100,7 @@ class PersonServiceTest {
 
     @Test
     void testGetPersonById_EntityNotFoundException() {
-        Long personId = 1L;
+        long personId = 1L;
         String cacheKey = "person-" + personId;
 
         when(cache.getFromCache(cacheKey)).thenReturn(null);
@@ -175,7 +166,7 @@ class PersonServiceTest {
 
     @Test
     void testDeletePerson() {
-        Long personId = 1L;
+        long personId = 1L;
         String cacheKey = "person-" + personId;
 
         when(personRepository.findById(Math.toIntExact(personId))).thenReturn(Optional.of(person));
