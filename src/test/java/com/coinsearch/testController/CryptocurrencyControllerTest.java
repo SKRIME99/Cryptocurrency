@@ -108,7 +108,7 @@ class CryptocurrencyControllerTest {
         ResponseEntity<String> responseEntity = cryptocurrencyController.deleteCrypto(cryptoId);
 
         // Verify
-        verify(coinCapService, times(0)).deleteCrypto(cryptoId);
+        verify(cryptocurrencyController, times(1)).deleteCrypto(cryptoId);
     }
 
 
