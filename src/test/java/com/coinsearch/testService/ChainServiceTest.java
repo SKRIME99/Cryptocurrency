@@ -37,7 +37,6 @@ class ChainServiceTest {
     @InjectMocks
     private ChainService chainService;
 
-
     @Test
     void testCreateChain() {
         // Mock data
@@ -69,7 +68,6 @@ class ChainServiceTest {
         assertEquals(expectedChain, result);
         verify(cache, times(1)).addToCache(anyString(), eq(expectedChain));
     }
-
 
     @Test
     void testUpdateChain() {
