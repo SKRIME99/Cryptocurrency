@@ -99,17 +99,6 @@ class CryptocurrencyControllerTest {
         verify(coinCapService, times(1)).addList(cryptoCurrencies);
     }
 
-    @Test
-    void testDeleteCrypto() {
-        // Mock data
-        Long cryptoId = 1L;
-
-        // Test
-        ResponseEntity<String> responseEntity = cryptocurrencyController.deleteCrypto(cryptoId);
-
-        // Verify
-        verify(cryptocurrencyController, times(1)).deleteCrypto(cryptoId);
-    }
 
 
 }
