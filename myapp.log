@@ -1,87 +1,164 @@
-2024-04-18T00:41:49.195+03:00  INFO 19308 --- [restartedMain] c.coinsearch.CryptoserviceApplication    : Starting CryptoserviceApplication using Java 21.0.2 with PID 19308 (C:\Users\d\IdeaProjects\Cryptocurrency\target\classes started by d in C:\Users\d\IdeaProjects\Cryptocurrency)
-2024-04-18T00:41:49.206+03:00  INFO 19308 --- [restartedMain] c.coinsearch.CryptoserviceApplication    : No active profile set, falling back to 1 default profile: "default"
-2024-04-18T00:41:49.259+03:00  INFO 19308 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
-2024-04-18T00:41:49.259+03:00  INFO 19308 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
-2024-04-18T00:41:49.975+03:00  INFO 19308 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-2024-04-18T00:41:50.024+03:00  INFO 19308 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 43 ms. Found 3 JPA repository interfaces.
-2024-04-18T00:41:50.789+03:00  INFO 19308 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
-2024-04-18T00:41:50.799+03:00  INFO 19308 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
-2024-04-18T00:41:50.800+03:00  INFO 19308 --- [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.18]
-2024-04-18T00:41:50.858+03:00  INFO 19308 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
-2024-04-18T00:41:50.858+03:00  INFO 19308 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1599 ms
-2024-04-18T00:41:51.078+03:00  INFO 19308 --- [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
-2024-04-18T00:41:51.132+03:00  INFO 19308 --- [restartedMain] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.4.1.Final
-2024-04-18T00:41:51.157+03:00  INFO 19308 --- [restartedMain] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
-2024-04-18T00:41:51.363+03:00  INFO 19308 --- [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
-2024-04-18T00:41:51.383+03:00  INFO 19308 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
-2024-04-18T00:41:51.583+03:00  INFO 19308 --- [restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@6a225744
-2024-04-18T00:41:51.584+03:00  INFO 19308 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
-2024-04-18T00:41:51.612+03:00  WARN 19308 --- [restartedMain] org.hibernate.orm.deprecation            : HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
-2024-04-18T00:41:52.432+03:00  INFO 19308 --- [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
-2024-04-18T00:41:52.518+03:00  INFO 19308 --- [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
-2024-04-18T00:41:53.108+03:00  INFO 19308 --- [restartedMain] o.s.d.j.r.query.QueryEnhancerFactory     : Hibernate is in classpath; If applicable, HQL parser will be used.
-2024-04-18T00:41:53.676+03:00  WARN 19308 --- [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-2024-04-18T00:41:54.676+03:00  INFO 19308 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
-2024-04-18T00:41:54.709+03:00  INFO 19308 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path ''
-2024-04-18T00:41:54.719+03:00  INFO 19308 --- [restartedMain] c.coinsearch.CryptoserviceApplication    : Started CryptoserviceApplication in 5.862 seconds (process running for 6.777)
-2024-04-18T00:42:01.753+03:00  INFO 19308 --- [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
-2024-04-18T00:42:01.759+03:00  INFO 19308 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
-2024-04-18T00:42:01.763+03:00  INFO 19308 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
-2024-04-18T01:18:31.943+03:00  INFO 3956 --- [restartedMain] c.coinsearch.CryptoserviceApplication    : Starting CryptoserviceApplication using Java 21.0.2 with PID 3956 (C:\Users\d\IdeaProjects\Cryptocurrency\target\classes started by d in C:\Users\d\IdeaProjects\Cryptocurrency)
-2024-04-18T01:18:31.946+03:00  INFO 3956 --- [restartedMain] c.coinsearch.CryptoserviceApplication    : No active profile set, falling back to 1 default profile: "default"
-2024-04-18T01:18:32.001+03:00  INFO 3956 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
-2024-04-18T01:18:32.001+03:00  INFO 3956 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
-2024-04-18T01:18:32.874+03:00  INFO 3956 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-2024-04-18T01:18:32.925+03:00  INFO 3956 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 45 ms. Found 3 JPA repository interfaces.
-2024-04-18T01:18:33.741+03:00  INFO 3956 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
-2024-04-18T01:18:33.756+03:00  INFO 3956 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
-2024-04-18T01:18:33.756+03:00  INFO 3956 --- [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.18]
-2024-04-18T01:18:33.811+03:00  INFO 3956 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
-2024-04-18T01:18:33.812+03:00  INFO 3956 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1810 ms
-2024-04-18T01:18:33.989+03:00  INFO 3956 --- [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
-2024-04-18T01:18:34.045+03:00  INFO 3956 --- [restartedMain] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.4.1.Final
-2024-04-18T01:18:34.077+03:00  INFO 3956 --- [restartedMain] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
-2024-04-18T01:18:34.300+03:00  INFO 3956 --- [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
-2024-04-18T01:18:34.322+03:00  INFO 3956 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
-2024-04-18T01:18:34.482+03:00  INFO 3956 --- [restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@6373831d
-2024-04-18T01:18:34.484+03:00  INFO 3956 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
-2024-04-18T01:18:34.518+03:00  WARN 3956 --- [restartedMain] org.hibernate.orm.deprecation            : HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
-2024-04-18T01:18:35.447+03:00  INFO 3956 --- [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
-2024-04-18T01:18:35.531+03:00  INFO 3956 --- [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
-2024-04-18T01:18:36.195+03:00  INFO 3956 --- [restartedMain] o.s.d.j.r.query.QueryEnhancerFactory     : Hibernate is in classpath; If applicable, HQL parser will be used.
-2024-04-18T01:18:36.799+03:00  WARN 3956 --- [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-2024-04-18T01:18:37.960+03:00  INFO 3956 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
-2024-04-18T01:18:37.998+03:00  INFO 3956 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path ''
-2024-04-18T01:18:38.007+03:00  INFO 3956 --- [restartedMain] c.coinsearch.CryptoserviceApplication    : Started CryptoserviceApplication in 6.527 seconds (process running for 7.039)
-2024-04-18T01:22:56.954+03:00  INFO 3956 --- [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
-2024-04-18T01:22:56.958+03:00  INFO 3956 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
-2024-04-18T01:22:56.965+03:00  INFO 3956 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
-2024-04-18T14:06:06.456+03:00  INFO 12168 --- [restartedMain] c.coinsearch.CryptoserviceApplication    : Starting CryptoserviceApplication using Java 21.0.2 with PID 12168 (C:\Users\d\IdeaProjects\Cryptocurrency\target\classes started by d in C:\Users\d\IdeaProjects\Cryptocurrency)
-2024-04-18T14:06:06.458+03:00  INFO 12168 --- [restartedMain] c.coinsearch.CryptoserviceApplication    : No active profile set, falling back to 1 default profile: "default"
-2024-04-18T14:06:06.525+03:00  INFO 12168 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
-2024-04-18T14:06:06.526+03:00  INFO 12168 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
-2024-04-18T14:06:07.378+03:00  INFO 12168 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-2024-04-18T14:06:07.446+03:00  INFO 12168 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 60 ms. Found 3 JPA repository interfaces.
-2024-04-18T14:06:08.349+03:00  INFO 12168 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
-2024-04-18T14:06:08.369+03:00  INFO 12168 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
-2024-04-18T14:06:08.370+03:00  INFO 12168 --- [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.18]
-2024-04-18T14:06:08.428+03:00  INFO 12168 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
-2024-04-18T14:06:08.429+03:00  INFO 12168 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1903 ms
-2024-04-18T14:06:08.653+03:00  INFO 12168 --- [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
-2024-04-18T14:06:08.727+03:00  INFO 12168 --- [restartedMain] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.4.1.Final
-2024-04-18T14:06:08.762+03:00  INFO 12168 --- [restartedMain] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
-2024-04-18T14:06:09.013+03:00  INFO 12168 --- [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
-2024-04-18T14:06:09.037+03:00  INFO 12168 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
-2024-04-18T14:06:09.239+03:00  INFO 12168 --- [restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@6547815e
-2024-04-18T14:06:09.240+03:00  INFO 12168 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
-2024-04-18T14:06:09.299+03:00  WARN 12168 --- [restartedMain] org.hibernate.orm.deprecation            : HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
-2024-04-18T14:06:10.195+03:00  INFO 12168 --- [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
-2024-04-18T14:06:10.324+03:00  INFO 12168 --- [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
-2024-04-18T14:06:10.994+03:00  INFO 12168 --- [restartedMain] o.s.d.j.r.query.QueryEnhancerFactory     : Hibernate is in classpath; If applicable, HQL parser will be used.
-2024-04-18T14:06:11.651+03:00  WARN 12168 --- [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-2024-04-18T14:06:12.678+03:00  INFO 12168 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
-2024-04-18T14:06:12.713+03:00  INFO 12168 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path ''
-2024-04-18T14:06:12.727+03:00  INFO 12168 --- [restartedMain] c.coinsearch.CryptoserviceApplication    : Started CryptoserviceApplication in 6.742 seconds (process running for 7.271)
-2024-04-18T14:06:16.959+03:00  INFO 12168 --- [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
-2024-04-18T14:06:16.963+03:00  INFO 12168 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
-2024-04-18T14:06:16.969+03:00  INFO 12168 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2024-04-21T14:04:11.743+03:00  INFO 24844 --- [restartedMain] c.coinsearch.CryptoserviceApplication    : Starting CryptoserviceApplication using Java 21.0.2 with PID 24844 (C:\Users\d\IdeaProjects\Cryptocurrency\target\classes started by d in C:\Users\d\IdeaProjects\Cryptocurrency)
+2024-04-21T14:04:11.753+03:00  INFO 24844 --- [restartedMain] c.coinsearch.CryptoserviceApplication    : No active profile set, falling back to 1 default profile: "default"
+2024-04-21T14:04:11.807+03:00  INFO 24844 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2024-04-21T14:04:11.807+03:00  INFO 24844 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2024-04-21T14:04:12.535+03:00  INFO 24844 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-04-21T14:04:12.585+03:00  INFO 24844 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 43 ms. Found 3 JPA repository interfaces.
+2024-04-21T14:04:13.298+03:00  INFO 24844 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2024-04-21T14:04:13.311+03:00  INFO 24844 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-04-21T14:04:13.311+03:00  INFO 24844 --- [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.18]
+2024-04-21T14:04:13.365+03:00  INFO 24844 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-04-21T14:04:13.365+03:00  INFO 24844 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1557 ms
+2024-04-21T14:04:13.548+03:00  INFO 24844 --- [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-04-21T14:04:13.614+03:00  INFO 24844 --- [restartedMain] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.4.1.Final
+2024-04-21T14:04:13.655+03:00  INFO 24844 --- [restartedMain] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2024-04-21T14:04:13.860+03:00  INFO 24844 --- [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-04-21T14:04:13.886+03:00  INFO 24844 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2024-04-21T14:04:14.033+03:00  INFO 24844 --- [restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@64ccd023
+2024-04-21T14:04:14.034+03:00  INFO 24844 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2024-04-21T14:04:14.068+03:00  WARN 24844 --- [restartedMain] org.hibernate.orm.deprecation            : HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2024-04-21T14:04:14.861+03:00  INFO 24844 --- [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-04-21T14:04:14.942+03:00  INFO 24844 --- [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-04-21T14:04:15.493+03:00  INFO 24844 --- [restartedMain] o.s.d.j.r.query.QueryEnhancerFactory     : Hibernate is in classpath; If applicable, HQL parser will be used.
+2024-04-21T14:04:15.974+03:00  WARN 24844 --- [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-04-21T14:04:16.976+03:00  INFO 24844 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2024-04-21T14:04:17.007+03:00  INFO 24844 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path ''
+2024-04-21T14:04:17.016+03:00  INFO 24844 --- [restartedMain] c.coinsearch.CryptoserviceApplication    : Started CryptoserviceApplication in 5.671 seconds (process running for 6.163)
+2024-04-21T14:05:06.100+03:00  INFO 24844 --- [http-nio-8080-exec-4] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-04-21T14:05:06.100+03:00  INFO 24844 --- [http-nio-8080-exec-4] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2024-04-21T14:05:06.103+03:00  INFO 24844 --- [http-nio-8080-exec-4] o.s.web.servlet.DispatcherServlet        : Completed initialization in 3 ms
+2024-04-21T14:18:59.267+03:00  INFO 24844 --- [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-04-21T14:18:59.272+03:00  INFO 24844 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2024-04-21T14:18:59.281+03:00  INFO 24844 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2024-04-21T14:59:55.542+03:00  INFO 9480 --- [restartedMain] c.coinsearch.CryptoserviceApplication    : Starting CryptoserviceApplication using Java 21.0.2 with PID 9480 (C:\Users\d\IdeaProjects\Cryptocurrency\target\classes started by d in C:\Users\d\IdeaProjects\Cryptocurrency)
+2024-04-21T14:59:55.544+03:00  INFO 9480 --- [restartedMain] c.coinsearch.CryptoserviceApplication    : No active profile set, falling back to 1 default profile: "default"
+2024-04-21T14:59:55.594+03:00  INFO 9480 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2024-04-21T14:59:55.594+03:00  INFO 9480 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2024-04-21T14:59:56.313+03:00  INFO 9480 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-04-21T14:59:56.355+03:00  INFO 9480 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 36 ms. Found 3 JPA repository interfaces.
+2024-04-21T14:59:57.031+03:00  INFO 9480 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2024-04-21T14:59:57.042+03:00  INFO 9480 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-04-21T14:59:57.043+03:00  INFO 9480 --- [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.18]
+2024-04-21T14:59:57.090+03:00  INFO 9480 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-04-21T14:59:57.090+03:00  INFO 9480 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1496 ms
+2024-04-21T14:59:57.301+03:00  INFO 9480 --- [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-04-21T14:59:57.341+03:00  INFO 9480 --- [restartedMain] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.4.1.Final
+2024-04-21T14:59:57.369+03:00  INFO 9480 --- [restartedMain] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2024-04-21T14:59:57.557+03:00  INFO 9480 --- [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-04-21T14:59:57.577+03:00  INFO 9480 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2024-04-21T14:59:57.704+03:00  INFO 9480 --- [restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@5c1f59ca
+2024-04-21T14:59:57.705+03:00  INFO 9480 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2024-04-21T14:59:57.729+03:00  WARN 9480 --- [restartedMain] org.hibernate.orm.deprecation            : HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2024-04-21T14:59:58.465+03:00  INFO 9480 --- [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-04-21T14:59:58.547+03:00  INFO 9480 --- [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-04-21T14:59:59.088+03:00  INFO 9480 --- [restartedMain] o.s.d.j.r.query.QueryEnhancerFactory     : Hibernate is in classpath; If applicable, HQL parser will be used.
+2024-04-21T14:59:59.587+03:00  WARN 9480 --- [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-04-21T15:00:00.629+03:00  INFO 9480 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2024-04-21T15:00:00.663+03:00  INFO 9480 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path ''
+2024-04-21T15:00:00.672+03:00  INFO 9480 --- [restartedMain] c.coinsearch.CryptoserviceApplication    : Started CryptoserviceApplication in 5.468 seconds (process running for 5.883)
+2024-04-21T15:00:01.618+03:00  INFO 9480 --- [http-nio-8080-exec-3] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-04-21T15:00:01.619+03:00  INFO 9480 --- [http-nio-8080-exec-3] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2024-04-21T15:00:01.620+03:00  INFO 9480 --- [http-nio-8080-exec-3] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2024-04-21T15:00:01.668+03:00  INFO 9480 --- [http-nio-8080-exec-6] c.c.controller.CryptocurrencyController  : number of access to service is 3
+2024-04-21T15:00:01.668+03:00  INFO 9480 --- [http-nio-8080-exec-2] c.c.controller.CryptocurrencyController  : number of access to service is 7
+2024-04-21T15:00:01.669+03:00  INFO 9480 --- [http-nio-8080-exec-8] c.c.controller.CryptocurrencyController  : number of access to service is 8
+2024-04-21T15:00:01.669+03:00  INFO 9480 --- [http-nio-8080-exec-11] c.c.controller.CryptocurrencyController  : number of access to service is 9
+2024-04-21T15:00:01.669+03:00  INFO 9480 --- [http-nio-8080-exec-5] c.c.controller.CryptocurrencyController  : number of access to service is 10
+2024-04-21T15:00:01.669+03:00  INFO 9480 --- [http-nio-8080-exec-3] c.c.controller.CryptocurrencyController  : number of access to service is 11
+2024-04-21T15:00:01.668+03:00  INFO 9480 --- [http-nio-8080-exec-10] c.c.controller.CryptocurrencyController  : number of access to service is 4
+2024-04-21T15:00:01.668+03:00  INFO 9480 --- [http-nio-8080-exec-1] c.c.controller.CryptocurrencyController  : number of access to service is 5
+2024-04-21T15:00:01.668+03:00  INFO 9480 --- [http-nio-8080-exec-9] c.c.controller.CryptocurrencyController  : number of access to service is 6
+2024-04-21T15:00:01.668+03:00  INFO 9480 --- [http-nio-8080-exec-4] c.c.controller.CryptocurrencyController  : number of access to service is 3
+2024-04-21T15:00:01.668+03:00  INFO 9480 --- [http-nio-8080-exec-7] c.c.controller.CryptocurrencyController  : number of access to service is 3
+2024-04-21T15:00:01.680+03:00  INFO 9480 --- [http-nio-8080-exec-12] c.c.controller.CryptocurrencyController  : number of access to service is 12
+2024-04-21T15:00:01.697+03:00  INFO 9480 --- [http-nio-8080-exec-13] c.c.controller.CryptocurrencyController  : number of access to service is 14
+2024-04-21T15:00:01.696+03:00  INFO 9480 --- [http-nio-8080-exec-14] c.c.controller.CryptocurrencyController  : number of access to service is 13
+2024-04-21T15:00:01.709+03:00  INFO 9480 --- [http-nio-8080-exec-15] c.c.controller.CryptocurrencyController  : number of access to service is 15
+2024-04-21T15:00:01.724+03:00  INFO 9480 --- [http-nio-8080-exec-16] c.c.controller.CryptocurrencyController  : number of access to service is 17
+2024-04-21T15:00:01.724+03:00  INFO 9480 --- [http-nio-8080-exec-17] c.c.controller.CryptocurrencyController  : number of access to service is 17
+2024-04-21T15:00:01.740+03:00  INFO 9480 --- [http-nio-8080-exec-18] c.c.controller.CryptocurrencyController  : number of access to service is 18
+2024-04-21T15:00:01.757+03:00  INFO 9480 --- [http-nio-8080-exec-20] c.c.controller.CryptocurrencyController  : number of access to service is 19
+2024-04-21T15:00:01.758+03:00  INFO 9480 --- [http-nio-8080-exec-19] c.c.controller.CryptocurrencyController  : number of access to service is 20
+2024-04-21T15:00:01.769+03:00  INFO 9480 --- [http-nio-8080-exec-21] c.c.controller.CryptocurrencyController  : number of access to service is 21
+2024-04-21T15:00:01.785+03:00  INFO 9480 --- [http-nio-8080-exec-22] c.c.controller.CryptocurrencyController  : number of access to service is 23
+2024-04-21T15:00:01.785+03:00  INFO 9480 --- [http-nio-8080-exec-23] c.c.controller.CryptocurrencyController  : number of access to service is 23
+2024-04-21T15:00:01.805+03:00  INFO 9480 --- [http-nio-8080-exec-24] c.c.controller.CryptocurrencyController  : number of access to service is 24
+2024-04-21T15:00:01.817+03:00  INFO 9480 --- [http-nio-8080-exec-26] c.c.controller.CryptocurrencyController  : number of access to service is 25
+2024-04-21T15:00:01.817+03:00  INFO 9480 --- [http-nio-8080-exec-25] c.c.controller.CryptocurrencyController  : number of access to service is 26
+2024-04-21T15:00:01.840+03:00  INFO 9480 --- [http-nio-8080-exec-27] c.c.controller.CryptocurrencyController  : number of access to service is 27
+2024-04-21T15:00:01.849+03:00  INFO 9480 --- [http-nio-8080-exec-28] c.c.controller.CryptocurrencyController  : number of access to service is 28
+2024-04-21T15:00:01.849+03:00  INFO 9480 --- [http-nio-8080-exec-29] c.c.controller.CryptocurrencyController  : number of access to service is 29
+2024-04-21T15:00:01.865+03:00  INFO 9480 --- [http-nio-8080-exec-30] c.c.controller.CryptocurrencyController  : number of access to service is 31
+2024-04-21T15:00:01.865+03:00  INFO 9480 --- [http-nio-8080-exec-31] c.c.controller.CryptocurrencyController  : number of access to service is 31
+2024-04-21T15:00:01.880+03:00  INFO 9480 --- [http-nio-8080-exec-32] c.c.controller.CryptocurrencyController  : number of access to service is 32
+2024-04-21T15:00:01.894+03:00  INFO 9480 --- [http-nio-8080-exec-34] c.c.controller.CryptocurrencyController  : number of access to service is 34
+2024-04-21T15:00:01.894+03:00  INFO 9480 --- [http-nio-8080-exec-33] c.c.controller.CryptocurrencyController  : number of access to service is 34
+2024-04-21T15:00:01.911+03:00  INFO 9480 --- [http-nio-8080-exec-35] c.c.controller.CryptocurrencyController  : number of access to service is 35
+2024-04-21T15:00:01.931+03:00  INFO 9480 --- [http-nio-8080-exec-37] c.c.controller.CryptocurrencyController  : number of access to service is 37
+2024-04-21T15:00:01.930+03:00  INFO 9480 --- [http-nio-8080-exec-36] c.c.controller.CryptocurrencyController  : number of access to service is 36
+2024-04-21T15:00:01.943+03:00  INFO 9480 --- [http-nio-8080-exec-5] c.c.controller.CryptocurrencyController  : number of access to service is 38
+2024-04-21T15:00:01.949+03:00  INFO 9480 --- [http-nio-8080-exec-8] c.c.controller.CryptocurrencyController  : number of access to service is 39
+2024-04-21T15:00:01.958+03:00  INFO 9480 --- [http-nio-8080-exec-19] c.c.controller.CryptocurrencyController  : number of access to service is 40
+2024-04-21T15:00:01.977+03:00  INFO 9480 --- [http-nio-8080-exec-18] c.c.controller.CryptocurrencyController  : number of access to service is 41
+2024-04-21T15:00:01.981+03:00  INFO 9480 --- [http-nio-8080-exec-33] c.c.controller.CryptocurrencyController  : number of access to service is 42
+2024-04-21T15:00:01.989+03:00  INFO 9480 --- [http-nio-8080-exec-14] c.c.controller.CryptocurrencyController  : number of access to service is 43
+2024-04-21T15:00:02.003+03:00  INFO 9480 --- [http-nio-8080-exec-24] c.c.controller.CryptocurrencyController  : number of access to service is 44
+2024-04-21T15:00:02.003+03:00  INFO 9480 --- [http-nio-8080-exec-37] c.c.controller.CryptocurrencyController  : number of access to service is 45
+2024-04-21T15:00:02.019+03:00  INFO 9480 --- [http-nio-8080-exec-20] c.c.controller.CryptocurrencyController  : number of access to service is 46
+2024-04-21T15:00:02.034+03:00  INFO 9480 --- [http-nio-8080-exec-30] c.c.controller.CryptocurrencyController  : number of access to service is 48
+2024-04-21T15:00:02.034+03:00  INFO 9480 --- [http-nio-8080-exec-27] c.c.controller.CryptocurrencyController  : number of access to service is 47
+2024-04-21T15:00:02.053+03:00  INFO 9480 --- [http-nio-8080-exec-8] c.c.controller.CryptocurrencyController  : number of access to service is 49
+2024-04-21T15:00:02.066+03:00  INFO 9480 --- [http-nio-8080-exec-16] c.c.controller.CryptocurrencyController  : number of access to service is 51
+2024-04-21T15:00:02.066+03:00  INFO 9480 --- [http-nio-8080-exec-19] c.c.controller.CryptocurrencyController  : number of access to service is 51
+2024-04-21T15:00:02.081+03:00  INFO 9480 --- [http-nio-8080-exec-5] c.c.controller.CryptocurrencyController  : number of access to service is 52
+2024-04-21T15:00:02.098+03:00  INFO 9480 --- [http-nio-8080-exec-29] c.c.controller.CryptocurrencyController  : number of access to service is 53
+2024-04-21T15:00:02.105+03:00  INFO 9480 --- [http-nio-8080-exec-26] c.c.controller.CryptocurrencyController  : number of access to service is 54
+2024-04-21T15:00:02.115+03:00  INFO 9480 --- [http-nio-8080-exec-22] c.c.controller.CryptocurrencyController  : number of access to service is 55
+2024-04-21T15:00:02.115+03:00  INFO 9480 --- [http-nio-8080-exec-11] c.c.controller.CryptocurrencyController  : number of access to service is 56
+2024-04-21T15:00:02.130+03:00  INFO 9480 --- [http-nio-8080-exec-12] c.c.controller.CryptocurrencyController  : number of access to service is 57
+2024-04-21T15:00:02.146+03:00  INFO 9480 --- [http-nio-8080-exec-3] c.c.controller.CryptocurrencyController  : number of access to service is 58
+2024-04-21T15:00:02.147+03:00  INFO 9480 --- [http-nio-8080-exec-4] c.c.controller.CryptocurrencyController  : number of access to service is 59
+2024-04-21T15:00:02.161+03:00  INFO 9480 --- [http-nio-8080-exec-33] c.c.controller.CryptocurrencyController  : number of access to service is 60
+2024-04-21T15:00:02.176+03:00  INFO 9480 --- [http-nio-8080-exec-14] c.c.controller.CryptocurrencyController  : number of access to service is 62
+2024-04-21T15:00:02.176+03:00  INFO 9480 --- [http-nio-8080-exec-36] c.c.controller.CryptocurrencyController  : number of access to service is 62
+2024-04-21T15:00:02.192+03:00  INFO 9480 --- [http-nio-8080-exec-37] c.c.controller.CryptocurrencyController  : number of access to service is 64
+2024-04-21T15:00:02.192+03:00  INFO 9480 --- [http-nio-8080-exec-24] c.c.controller.CryptocurrencyController  : number of access to service is 64
+2024-04-21T15:00:02.208+03:00  INFO 9480 --- [http-nio-8080-exec-20] c.c.controller.CryptocurrencyController  : number of access to service is 65
+2024-04-21T15:00:02.224+03:00  INFO 9480 --- [http-nio-8080-exec-30] c.c.controller.CryptocurrencyController  : number of access to service is 67
+2024-04-21T15:00:02.224+03:00  INFO 9480 --- [http-nio-8080-exec-27] c.c.controller.CryptocurrencyController  : number of access to service is 66
+2024-04-21T15:00:02.239+03:00  INFO 9480 --- [http-nio-8080-exec-35] c.c.controller.CryptocurrencyController  : number of access to service is 68
+2024-04-21T15:00:02.255+03:00  INFO 9480 --- [http-nio-8080-exec-19] c.c.controller.CryptocurrencyController  : number of access to service is 69
+2024-04-21T15:00:02.255+03:00  INFO 9480 --- [http-nio-8080-exec-16] c.c.controller.CryptocurrencyController  : number of access to service is 70
+2024-04-21T15:00:02.271+03:00  INFO 9480 --- [http-nio-8080-exec-5] c.c.controller.CryptocurrencyController  : number of access to service is 71
+2024-04-21T15:00:02.286+03:00  INFO 9480 --- [http-nio-8080-exec-29] c.c.controller.CryptocurrencyController  : number of access to service is 73
+2024-04-21T15:00:02.286+03:00  INFO 9480 --- [http-nio-8080-exec-26] c.c.controller.CryptocurrencyController  : number of access to service is 73
+2024-04-21T15:00:02.302+03:00  INFO 9480 --- [http-nio-8080-exec-22] c.c.controller.CryptocurrencyController  : number of access to service is 75
+2024-04-21T15:00:02.302+03:00  INFO 9480 --- [http-nio-8080-exec-11] c.c.controller.CryptocurrencyController  : number of access to service is 75
+2024-04-21T15:00:02.317+03:00  INFO 9480 --- [http-nio-8080-exec-12] c.c.controller.CryptocurrencyController  : number of access to service is 76
+2024-04-21T15:00:02.332+03:00  INFO 9480 --- [http-nio-8080-exec-3] c.c.controller.CryptocurrencyController  : number of access to service is 78
+2024-04-21T15:00:02.332+03:00  INFO 9480 --- [http-nio-8080-exec-17] c.c.controller.CryptocurrencyController  : number of access to service is 78
+2024-04-21T15:00:02.349+03:00  INFO 9480 --- [http-nio-8080-exec-9] c.c.controller.CryptocurrencyController  : number of access to service is 79
+2024-04-21T15:00:02.366+03:00  INFO 9480 --- [http-nio-8080-exec-1] c.c.controller.CryptocurrencyController  : number of access to service is 81
+2024-04-21T15:00:02.366+03:00  INFO 9480 --- [http-nio-8080-exec-14] c.c.controller.CryptocurrencyController  : number of access to service is 80
+2024-04-21T15:00:02.378+03:00  INFO 9480 --- [http-nio-8080-exec-37] c.c.controller.CryptocurrencyController  : number of access to service is 82
+2024-04-21T15:00:02.393+03:00  INFO 9480 --- [http-nio-8080-exec-28] c.c.controller.CryptocurrencyController  : number of access to service is 83
+2024-04-21T15:00:02.393+03:00  INFO 9480 --- [http-nio-8080-exec-20] c.c.controller.CryptocurrencyController  : number of access to service is 84
+2024-04-21T15:00:02.409+03:00  INFO 9480 --- [http-nio-8080-exec-7] c.c.controller.CryptocurrencyController  : number of access to service is 85
+2024-04-21T15:00:02.424+03:00  INFO 9480 --- [http-nio-8080-exec-35] c.c.controller.CryptocurrencyController  : number of access to service is 87
+2024-04-21T15:00:02.424+03:00  INFO 9480 --- [http-nio-8080-exec-8] c.c.controller.CryptocurrencyController  : number of access to service is 86
+2024-04-21T15:00:02.440+03:00  INFO 9480 --- [http-nio-8080-exec-19] c.c.controller.CryptocurrencyController  : number of access to service is 88
+2024-04-21T15:00:02.456+03:00  INFO 9480 --- [http-nio-8080-exec-16] c.c.controller.CryptocurrencyController  : number of access to service is 89
+2024-04-21T15:00:02.456+03:00  INFO 9480 --- [http-nio-8080-exec-31] c.c.controller.CryptocurrencyController  : number of access to service is 90
+2024-04-21T15:00:02.473+03:00  INFO 9480 --- [http-nio-8080-exec-29] c.c.controller.CryptocurrencyController  : number of access to service is 91
+2024-04-21T15:00:02.473+03:00  INFO 9480 --- [http-nio-8080-exec-26] c.c.controller.CryptocurrencyController  : number of access to service is 92
+2024-04-21T15:00:02.485+03:00  INFO 9480 --- [http-nio-8080-exec-11] c.c.controller.CryptocurrencyController  : number of access to service is 93
+2024-04-21T15:00:02.501+03:00  INFO 9480 --- [http-nio-8080-exec-2] c.c.controller.CryptocurrencyController  : number of access to service is 95
+2024-04-21T15:00:02.501+03:00  INFO 9480 --- [http-nio-8080-exec-6] c.c.controller.CryptocurrencyController  : number of access to service is 95
+2024-04-21T15:00:02.518+03:00  INFO 9480 --- [http-nio-8080-exec-3] c.c.controller.CryptocurrencyController  : number of access to service is 96
+2024-04-21T15:00:02.533+03:00  INFO 9480 --- [http-nio-8080-exec-33] c.c.controller.CryptocurrencyController  : number of access to service is 98
+2024-04-21T15:00:02.533+03:00  INFO 9480 --- [http-nio-8080-exec-13] c.c.controller.CryptocurrencyController  : number of access to service is 98
+2024-04-21T15:00:02.549+03:00  INFO 9480 --- [http-nio-8080-exec-1] c.c.controller.CryptocurrencyController  : number of access to service is 99
+2024-04-21T15:00:02.565+03:00  INFO 9480 --- [http-nio-8080-exec-24] c.c.controller.CryptocurrencyController  : number of access to service is 100
+2024-04-21T15:00:33.517+03:00  INFO 9480 --- [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-04-21T15:00:33.519+03:00  INFO 9480 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2024-04-21T15:00:33.526+03:00  INFO 9480 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.

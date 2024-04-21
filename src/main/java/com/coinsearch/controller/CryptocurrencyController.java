@@ -2,7 +2,11 @@ package com.coinsearch.controller;
 
 import com.coinsearch.model.CryptoData;
 import com.coinsearch.service.CoinCapService;
+import com.coinsearch.service.CounterService;
+import com.coinsearch.service.PersonService;
 import lombok.AllArgsConstructor;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -18,12 +22,17 @@ public class CryptocurrencyController {
     private final CoinCapService coinCapService;
     private final List<String> allowedCryptocurrencies = Arrays.asList("bitcoin", "ethtreum", "solana", "tether", "xrp", "cardano", "dogecoin", "polkadot", "tron", "litecoin");
 
+    private static final Logger LOG = LoggerFactory.getLogger(CryptocurrencyController.class);
+
     private boolean isValidCryptoCurrency(String cryptoCurrency) {
         return allowedCryptocurrencies.contains(cryptoCurrency.toLowerCase());
     }
 
     @GetMapping
     public ResponseEntity<List<CryptoData>> getAllCryptoData(){
+        CounterService.enhanceCounter();
+        int numberOfRequest = CounterService.getCounter();
+        LOG.info("number of access to service is {}", numberOfRequest);
         List<CryptoData> data = coinCapService.getAllCryptoData();
         return ResponseEntity.ok(data);
     }

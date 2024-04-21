@@ -66,7 +66,7 @@ public class CoinCapService {
 
     public CryptoData getCryptoDataById(Long cryptoId) {
         return cryptoRepository.findById(Math.toIntExact(cryptoId)).orElseThrow(
-                () -> new EntityNotFoundException(ERROR_MESSAGE + cryptoId)
+            () -> new EntityNotFoundException(ERROR_MESSAGE + cryptoId)
         );
     }
 
@@ -91,7 +91,7 @@ public class CoinCapService {
 
     public CryptoData updateCryptoData(Long cryptoId, CryptoData updatedCryptoData) {
         CryptoData cryptoData = cryptoRepository.findById(Math.toIntExact(cryptoId)).orElseThrow(
-                () -> new EntityNotFoundException(ERROR_MESSAGE + cryptoId)
+            () -> new EntityNotFoundException(ERROR_MESSAGE + cryptoId)
         );
         String cacheKey = CACHE_KEY + cryptoData.getName();
         cache.removeFromCache(cacheKey);
@@ -106,7 +106,7 @@ public class CoinCapService {
 
     public void deleteCrypto(Long cryptoId) {
         CryptoData cryptoData = cryptoRepository.findById(Math.toIntExact(cryptoId)).orElseThrow(
-                () -> new EntityNotFoundException(ERROR_MESSAGE + cryptoId)
+            () -> new EntityNotFoundException(ERROR_MESSAGE + cryptoId)
         );
 
         if (cryptoData.getPersons() != null && cryptoData.getPersons().size() != 0){
@@ -124,10 +124,10 @@ public class CoinCapService {
 
     public void deleteCryptoFromPerson(Long cryptoId, Long personId) {
         CryptoData cryptoData = cryptoRepository.findById(Math.toIntExact(cryptoId)).orElseThrow(
-                () -> new EntityNotFoundException(ERROR_MESSAGE + cryptoId)
+            () -> new EntityNotFoundException(ERROR_MESSAGE + cryptoId)
         );
         Person person = personRepository.findById(Math.toIntExact(personId)).orElseThrow(
-                () -> new EntityNotFoundException("Person does not exist with given id: " + personId)
+            () -> new EntityNotFoundException("Person does not exist with given id: " + personId)
         );
 
         person.getCryptocurrencies().remove(cryptoData);
@@ -138,16 +138,14 @@ public class CoinCapService {
 
     public void deleteCryptoFromChain(Long cryptoId, Long chainId) {
         CryptoData cryptoData = cryptoRepository.findById(Math.toIntExact(cryptoId)).orElseThrow(
-                () -> new EntityNotFoundException(ERROR_MESSAGE + cryptoId)
+            () -> new EntityNotFoundException(ERROR_MESSAGE + cryptoId)
         );
         Chain chain = chainRepository.findById(Math.toIntExact(chainId)).orElseThrow(
-                () -> new EntityNotFoundException("Chain does not exist with given id: " + chainId)
+            () -> new EntityNotFoundException("Chain does not exist with given id: " + chainId)
         );
 
         chain.getCryptocurrencies().remove(cryptoData);
         cryptoData.setChain(null);
         chainRepository.save(chain);
     }
-
-
 }
