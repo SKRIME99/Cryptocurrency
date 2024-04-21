@@ -1,18 +1,22 @@
 package com.coinsearch.service;
 
+import com.coinsearch.controller.CryptocurrencyController;
 import com.coinsearch.model.ServiceCounter;
 import lombok.Data;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 
 import java.util.concurrent.atomic.AtomicInteger;
 
 @Data
 public final class CounterService {
+    private static final Logger LOG = LoggerFactory.getLogger(CounterService.class);
 
     private CounterService() {
     }
 
-    private static ServiceCounter serviceCounter = new ServiceCounter();
+    public static ServiceCounter serviceCounter = new ServiceCounter();
 
     private static AtomicInteger newEnhanceCounter = new AtomicInteger(0);
 
@@ -20,8 +24,9 @@ public final class CounterService {
         if (serviceCounter.getCounterRequest() != null) {
             newEnhanceCounter = serviceCounter.getCounterRequest();
         }
-        newEnhanceCounter.incrementAndGet();
+        int number = newEnhanceCounter.incrementAndGet();
         serviceCounter.setCounterRequest(newEnhanceCounter);
+        LOG.info("number of access to service is {}", number);
     }
 
     public static synchronized int getCounter() {

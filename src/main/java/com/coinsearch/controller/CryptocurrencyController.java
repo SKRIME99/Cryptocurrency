@@ -31,8 +31,6 @@ public class CryptocurrencyController {
     @GetMapping
     public ResponseEntity<List<CryptoData>> getAllCryptoData(){
         CounterService.enhanceCounter();
-        int numberOfRequest = CounterService.getCounter();
-        LOG.info("number of access to service is {}", numberOfRequest);
         List<CryptoData> data = coinCapService.getAllCryptoData();
         return ResponseEntity.ok(data);
     }
