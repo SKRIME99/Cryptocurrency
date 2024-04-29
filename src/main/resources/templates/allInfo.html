@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Cryptocurrencies</title>
+
+    <style>
+        body {
+            background-color: #f3f3f3;
+            font-family: Arial, sans-serif;
+            margin: 0;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f3f3f3;
+            border-radius: 5px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+        .container-buttons{
+            width: 350px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f3f3f3;
+            border-radius: 5px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        .table {
+            border-radius: 5px;
+            border-collapse: separate;
+            border-spacing: 0;
+            margin: 0 auto; /* Center the table horizontally */
+            width: 100%; /* Make the table full-width within the container */
+            text-align: left;
+        }
+        .table th, .table td {
+            border: 1px solid #31363F;
+            padding: 15px;
+        }
+        .table thead th {
+            background-color: #0C359E;
+            color: #ffffff;
+        }
+        .table-striped tbody tr:nth-of-type(odd) {
+            background-color: #ACE2E1;
+        }
+        .mt-3 a {
+            margin-right: 10px;
+            text-align: center;
+        }
+        caption {
+            caption-side: top;
+            text-align: center;
+            font-size: 1.5em;
+            font-weight: bold;
+            color: #6b705c;
+            padding: 10px;
+        }
+        button {
+            display: block;
+            width: 100%;
+            background-color: #6b705c;
+            color: #fff7f7;
+            border: none;
+            border-radius: 3px;
+            padding: 10px 20px;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+        a.btn {
+            display: block;
+            width: 300px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 3px;
+            padding: 10px 20px;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+
+        a.btn:hover {
+            background-color: #3b7ab4;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container mt-5">
+    <table class="table table-striped">
+        <caption>List of Cryptocurrencies</caption>
+        <thead class="thead-dark">
+        <tr>
+            <th>Name</th>
+            <th>Symbol</th>
+            <th>Max Supply</th>
+            <th>Volume (USD 24hr)</th>
+            <th>Price (USD)</th>
+            <th>Change % (24hr)</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="crypto : ${cryptos}">
+            <td th:text="${crypto.name}"></td>
+            <td th:text="${crypto.symbol}"></td>
+            <td th:text="${crypto.maxSupply}"></td>
+            <td th:text="${crypto.volumeUsd24Hr}"></td>
+            <td th:text="${crypto.priceUsd}"></td>
+            <td th:text="${crypto.changePercent24Hr}"></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+<div class="container mt-5">
+    <table class="table table-striped">
+        <caption>List of Chains</caption>
+        <thead class="thead-dark">
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="chain : ${chains}">
+            <td th:text="${chain.id}"></td>
+            <td th:text="${chain.name}"></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+<div class="container mt-5">
+    <table class="table table-striped">
+        <caption>List of People</caption>
+        <thead class="thead-dark">
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="person : ${people}">
+            <td th:text="${person.id}"></td>
+            <td th:text="${person.name}"></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+<br>
+<br>
+<div class="container-buttons ">
+    <h1>Operations</h1>
+    <a href="http://localhost:8080/api/v1/cryptocurrency/create_cryptodata" class="btn">Add Crypto</a><br>
+    <a href="http://localhost:8080/api/v1/cryptocurrency/addCryptoToPersonHTML" class="btn">Add crypto to Person</a><br>
+    <a href="http://localhost:8080/api/v1/cryptocurrency/addCryptoToChainHTML" class="btn">Add crypto to Chain</a><br>
+    <a href="http://localhost:8080/api/v1/cryptocurrency/deleteCryptoHTML" class="btn">DeleteCrypto</a><br>
+    <a href="http://localhost:8080/api/v1/cryptocurrency/deleteCryptoFromPersonHTML" class="btn">DeleteCryptoFromPerson</a><br>
+    <a href="http://localhost:8080/api/v1/cryptocurrency/deleteCryptoFromChainHTML" class="btn">DeleteCryptoFromChain</a><br>
+
+</div>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+        crossorigin="anonymous"></script>
+</body>
+</body>
+</html>

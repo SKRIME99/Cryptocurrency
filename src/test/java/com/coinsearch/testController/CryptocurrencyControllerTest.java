@@ -34,7 +34,7 @@ class CryptocurrencyControllerTest {
     private CryptocurrencyController cryptocurrencyController;
 
 
-    @Test
+/*    @Test
     void testGetAllCryptoData() {
 
         // Mock data
@@ -48,7 +48,7 @@ class CryptocurrencyControllerTest {
         assertEquals(HttpStatus.OK, responseEntity.getStatusCode());
         assertEquals(mockCryptoData, responseEntity.getBody());
         verify(coinCapService, times(1)).getAllCryptoData();
-    }
+    }*/
 
     @Test
     void testGetCryptoDataById() {

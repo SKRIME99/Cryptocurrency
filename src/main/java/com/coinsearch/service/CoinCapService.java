@@ -15,6 +15,7 @@ import org.springframework.web.client.RestTemplate;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
@@ -45,16 +46,19 @@ public class CoinCapService {
         this.cache = cache;
     }
 
-    public CryptoData createCryptocurrency(String cryptocurrency){
+    public boolean createCryptocurrency(String cryptocurrency){
         String apiUrl = String.format(COINCAP_API_URL, cryptocurrency);
         CryptocurrencyData cryptocurrencyData = restTemplate.getForObject(apiUrl, CryptocurrencyData.class);
-        assert cryptocurrencyData != null;
+        if (cryptocurrencyData == null){
+            return false;
+        }
         CryptoData cryptoData = cryptocurrencyData.getData();
-        return cryptoRepository.save(cryptoData);
+        cryptoRepository.save(cryptoData);
+        return true;
     }
 
-    public List<CryptoData> addList(List<String> cryptoCurrencies) {
-        return cryptoCurrencies.stream()
+    public boolean addList(List<String> cryptoCurrencies) {
+        cryptoCurrencies.stream()
                 .filter(this::isValidCryptoCurrency)
                 .map(cryptoCurrency -> {
                     int index = allowedCryptocurrencies.indexOf(cryptoCurrency);
@@ -62,6 +66,7 @@ public class CoinCapService {
                     return createCryptocurrency(crypto);
                 })
                 .toList();
+        return true;
     }
 
     public CryptoData getCryptoDataById(Long cryptoId) {
@@ -104,48 +109,61 @@ public class CoinCapService {
         return cryptoRepository.save(cryptoData);
     }
 
-    public void deleteCrypto(Long cryptoId) {
-        CryptoData cryptoData = cryptoRepository.findById(Math.toIntExact(cryptoId)).orElseThrow(
-            () -> new EntityNotFoundException(ERROR_MESSAGE + cryptoId)
-        );
-
-        if (cryptoData.getPersons() != null && cryptoData.getPersons().size() != 0){
-            throw new EntityNotFoundException("Can't delete crypto " + cryptoId + " because people are using it. Try deleting this crypto from a specified person.");
+    public boolean deleteCrypto(Long cryptoId) {
+        Optional<CryptoData> cryptoData = cryptoRepository.findById(Math.toIntExact(cryptoId));
+        if (!cryptoData.isPresent()){
+            return false;
         }
-        if (cryptoData.getChain() != null){
-            throw new EntityNotFoundException("Can't delete crypto " + cryptoId + " because it is in a chain. Try deleting this crypto from a specified chain.");
+
+        if (cryptoData.get().getPersons() != null && cryptoData.get().getPersons().size() != 0){
+            return false;
+        }
+        if (cryptoData.get().getChain() != null){
+            return false;
         }
         else if (cryptoData != null) {
-            String cacheKey = CACHE_KEY + cryptoData.getName();
+            String cacheKey = CACHE_KEY + cryptoData.get().getName();
             cache.removeFromCache(cacheKey);
             cryptoRepository.deleteById(Math.toIntExact(cryptoId));
         }
+        return true;
     }
 
-    public void deleteCryptoFromPerson(Long cryptoId, Long personId) {
-        CryptoData cryptoData = cryptoRepository.findById(Math.toIntExact(cryptoId)).orElseThrow(
-            () -> new EntityNotFoundException(ERROR_MESSAGE + cryptoId)
-        );
-        Person person = personRepository.findById(Math.toIntExact(personId)).orElseThrow(
-            () -> new EntityNotFoundException("Person does not exist with given id: " + personId)
-        );
+    public boolean deleteCryptoFromPerson(Long cryptoId, Long personId) {
+        Optional<CryptoData> cryptoData = cryptoRepository.findById(Math.toIntExact(cryptoId));
+        if (!cryptoData.isPresent()){
+            return false;
+        }
+        Optional<Person> person = personRepository.findById(Math.toIntExact(personId));
+        if (!person.isPresent()){
+            return false;
+        }
+        person.ifPresent(p -> {
+            p.getCryptocurrencies().remove(cryptoData.orElseThrow());
+            cryptoData.ifPresent(cd -> cd.getPersons().remove(p));
+            personRepository.save(p);
+            cryptoData.ifPresent(cryptoRepository::save);
+        });
 
-        person.getCryptocurrencies().remove(cryptoData);
-        cryptoData.getPersons().remove(person);
-        personRepository.save(person);
-        cryptoRepository.save(cryptoData);
+        return true;
     }
 
-    public void deleteCryptoFromChain(Long cryptoId, Long chainId) {
-        CryptoData cryptoData = cryptoRepository.findById(Math.toIntExact(cryptoId)).orElseThrow(
-            () -> new EntityNotFoundException(ERROR_MESSAGE + cryptoId)
-        );
-        Chain chain = chainRepository.findById(Math.toIntExact(chainId)).orElseThrow(
-            () -> new EntityNotFoundException("Chain does not exist with given id: " + chainId)
-        );
+    public boolean deleteCryptoFromChain(Long cryptoId, Long chainId) {
+        Optional<CryptoData> cryptoData = cryptoRepository.findById(Math.toIntExact(cryptoId));
+        if (!cryptoData.isPresent()){
+            return false;
+        }
+        Optional<Chain> chain = chainRepository.findById(Math.toIntExact(chainId));
+        if (!chain.isPresent()){
+            return false;
+        }
 
-        chain.getCryptocurrencies().remove(cryptoData);
-        cryptoData.setChain(null);
-        chainRepository.save(chain);
+        // Assuming we have Optional<Chain> chain and Optional<CryptoData> cryptoData
+        chain.ifPresent(c -> {
+            c.getCryptocurrencies().remove(cryptoData.orElseThrow());
+            cryptoData.ifPresent(cd -> cd.setChain(null));
+            chainRepository.save(c);
+        });
+        return true;
     }
 }

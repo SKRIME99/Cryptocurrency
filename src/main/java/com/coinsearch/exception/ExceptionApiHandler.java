@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 import org.springframework.web.client.HttpClientErrorException;
 import org.springframework.web.servlet.NoHandlerFoundException;
-import org.springframework.web.servlet.resource.NoResourceFoundException;
+
 
 @RestControllerAdvice // автоматический контролирует все ошибки
 public class ExceptionApiHandler {
@@ -43,7 +43,7 @@ public class ExceptionApiHandler {
     }
 
     @ResponseStatus(HttpStatus.NOT_FOUND)
-    @ExceptionHandler({NoHandlerFoundException.class, NoResourceFoundException.class})
+    @ExceptionHandler({NoHandlerFoundException.class})
     public ErrorMessage handlerFoundException(Exception ex) {
         LOG.error("ERROR, 404 CODE");
         return new ErrorMessage("404 ERROR, NOT FOUND");
