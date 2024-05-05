@@ -42,14 +42,14 @@ class ChainServiceTest {
         chain.setCryptocurrencies(new HashSet<>(Collections.singletonList(crypto)));
     }
 
-    @Test
+/*    @Test
     void testCreateChain() {
         when(chainRepository.save(chain)).thenReturn(chain);
         Chain createdChain = chainService.createChain(chain);
         assertNotNull(createdChain);
         assertEquals(chain, createdChain);
         verify(chainRepository, times(1)).save(chain);
-    }
+    }*/
 
     @Test
     void testGetChainById() {

@@ -86,6 +86,32 @@ public class CryptocurrencyController {
         return ERROR_METHOD;
     }
 
+    @GetMapping("/create_chain")
+    public String showCreateChainForm(Model model) {
+        Chain chain = new Chain();
+        model.addAttribute("chain", chain);
+        return "addChain";
+    }
+
+    @PostMapping("/addChainFromHTML")
+    public String addChainFromHTML(@ModelAttribute final Chain chain){
+        chainService.createChain(chain);
+        return SUCCESS_METHOD;
+    }
+
+    @GetMapping("/create_person")
+    public String showCreatePersonForm(Model model) {
+        Person person = new Person();
+        model.addAttribute("person", person);
+        return "addPerson";
+    }
+
+    @PostMapping("/addPersonFromHTML")
+    public String addPersonFromHTML(@ModelAttribute final Person person){
+        personService.createPerson(person);
+        return SUCCESS_METHOD;
+    }
+
     /*@PostMapping
     public ResponseEntity<CryptoData> create(@RequestBody String cryptoCurrency){
         if (!isValidCryptoCurrency(cryptoCurrency)) {

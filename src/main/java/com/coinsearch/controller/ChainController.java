@@ -7,8 +7,10 @@ import com.coinsearch.service.CoinCapService;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import java.util.List;
 
 @AllArgsConstructor
@@ -17,6 +19,10 @@ import java.util.List;
 public class ChainController {
     private final ChainService chainService;
     private final CoinCapService coinCapService;
+
+    private static final String ERROR_METHOD = "errorMethod";
+
+    private static final String SUCCESS_METHOD = "successMethod";
 
     @PostMapping
     public ResponseEntity<Chain> create(@RequestBody Chain chain){
