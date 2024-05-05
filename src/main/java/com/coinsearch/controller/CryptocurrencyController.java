@@ -27,7 +27,6 @@ import java.util.List;
 @RequestMapping("/api/v1/cryptocurrency")
 public class CryptocurrencyController {
 
-
     private static final String SUCCESSSTATUS = "Method success";
 
     private static final String ERROR_METHOD = "errorMethod";
@@ -112,6 +111,7 @@ public class CryptocurrencyController {
     public String getDeleteCryptoHTML(){
         return "deleteCrypto";
     }
+
     @PostMapping("/deleteCryptoHTML")
     public String deleteCryptoHTML(@RequestParam(required = false, name = "idCrypto") String crypto_id) {
         Long cryptoId = Long.parseLong(crypto_id);
@@ -120,6 +120,7 @@ public class CryptocurrencyController {
         }
         return ERROR_METHOD;
     }
+
     @GetMapping("/deleteCryptoFromPersonHTML")
     public String deleteTest(){
         return "deleteCryptoFromPerson";
@@ -129,6 +130,7 @@ public class CryptocurrencyController {
     public String deleteTest2(){
         return "deleteCryptoFromChain";
     }
+
     @DeleteMapping("/{crypto_id}/person/{person_id}")
     public ResponseEntity<String> deleteCryptoFromPerson(@PathVariable("crypto_id") Long cryptoId, @PathVariable("person_id") Long personId) {
         coinCapService.deleteCryptoFromPerson(cryptoId, personId);
@@ -144,6 +146,7 @@ public class CryptocurrencyController {
         }
         return ERROR_METHOD;
     }
+
     @DeleteMapping("/{crypto_id}/chain/{chain_id}")
     public ResponseEntity<String> deleteCryptoFromChain(@PathVariable("crypto_id") Long cryptoId, @PathVariable("chain_id") Long chainId) {
         coinCapService.deleteCryptoFromChain(cryptoId, chainId);
@@ -160,15 +163,16 @@ public class CryptocurrencyController {
         return ERROR_METHOD;
     }
 
-
     @GetMapping("/addCryptoToPersonHTML")
     public String getAddCryptoToPersonHTML(){
         return "addCryptoToPerson";
     }
+
     @GetMapping("/addCryptoToChainHTML")
     public String getAddCryptoToCahinHTML(){
         return "addCryptoToChain";
     }
+
     @PostMapping("/addCryptoToPersonHTML")
     public String AddCryptoToPersonHTML(@RequestParam(required = false, name = "idCrypto") String crypto_id, @RequestParam(required = false, name = "idPerson") String person_id) {
         Long cryptoId = Long.parseLong(crypto_id);

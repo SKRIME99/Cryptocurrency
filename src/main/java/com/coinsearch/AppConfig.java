@@ -15,21 +15,14 @@ public class AppConfig implements WebMvcConfigurer {
         return new RestTemplate();
     }
 
-
     @Bean
     public ClassLoaderTemplateResolver templateResolver() {
-
         ClassLoaderTemplateResolver templateResolver = new ClassLoaderTemplateResolver();
-
         templateResolver.setPrefix("templates/");
         templateResolver.setCacheable(false);
         templateResolver.setSuffix(".html");
         templateResolver.setTemplateMode("HTML5");
         templateResolver.setCharacterEncoding("UTF-8");
-
         return templateResolver;
     }
-
-
-
 }

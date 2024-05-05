@@ -76,9 +76,9 @@ class CoinCapServiceTest {
         when(restTemplate.getForObject(anyString(), any(Class.class))).thenReturn(cryptocurrencyData);
         when(cryptoRepository.save(any(CryptoData.class))).thenReturn(cryptoData);
 
-        CryptoData createdCryptoData = coinCapService.createCryptocurrency("bitcoin");
+        boolean createdCryptoData = coinCapService.createCryptocurrency("bitcoin");
 
-        assertEquals(cryptoData, createdCryptoData);
+        assertEquals(true, createdCryptoData);
         verify(restTemplate, times(1)).getForObject(anyString(), any(Class.class));
         verify(cryptoRepository, times(1)).save(any(CryptoData.class));
     }

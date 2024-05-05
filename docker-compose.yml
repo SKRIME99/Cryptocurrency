@@ -1,0 +1,33 @@
+version: '3.9'
+
+services:
+  cryptodb:
+    image: postgres
+    build:
+      context: .
+      dockerfile: Dockerfile.postgresql
+    restart: always
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: 7777
+      POSTGRES_DB: cryptodb
+    ports:
+      - '5432:5432'
+
+  app:
+    image: cryptojava
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "8080:8080"
+    environment:
+
+      DB_USER: postgres
+      DB_PASSWORD: 7777
+      DB_NAME: cryptodb
+      DB_HOST: cyrptodb:5432
+
+    depends_on:
+      - cryptodb
+

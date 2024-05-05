@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 import org.springframework.web.client.HttpClientErrorException;
 import org.springframework.web.servlet.NoHandlerFoundException;
 
-
 @RestControllerAdvice // автоматический контролирует все ошибки
 public class ExceptionApiHandler {
     private static final Logger LOG = LoggerFactory.getLogger(ExceptionApiHandler.class);
