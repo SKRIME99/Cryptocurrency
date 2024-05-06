@@ -11,7 +11,7 @@ import org.springframework.stereotype.Component;
 @Aspect
 @Component
 @Slf4j
-public class CrudLogger {
+public class  CrudLogger {
     private final Logger logger = LoggerFactory.getLogger(CrudLogger.class);
 
     @Pointcut("execution(* com.coinsearch.service.*.create*(..))")

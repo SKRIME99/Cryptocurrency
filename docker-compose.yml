@@ -9,10 +9,10 @@ services:
     restart: always
     environment:
       POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: 7777
+      POSTGRES_PASSWORD: 1111
       POSTGRES_DB: cryptodb
     ports:
-      - '5432:5432'
+      - '5433:5432'
 
   app:
     image: cryptojava
@@ -24,7 +24,7 @@ services:
     environment:
 
       DB_USER: postgres
-      DB_PASSWORD: 7777
+      DB_PASSWORD: 1111
       DB_NAME: cryptodb
       DB_HOST: cyrptodb:5432
 
